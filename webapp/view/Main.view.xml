@@ -1,6 +1,194 @@
-<mvc:View controllerName="clientcinema.controller.Main"
+<mvc:View
+    displayBlock="true"
+    controllerName="clientcinema.controller.Main"
+    height="100%"
+    xmlns="sap.uxap"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-    </Page>
+    xmlns:m="sap.m"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout"
+>
+    <ObjectPageLayout
+        id="ObjectPageLayout"
+        showTitleInHeaderContent="true"
+        alwaysShowContentHeader="false"
+        preserveHeaderStateOnScroll="false"
+        headerContentPinnable="true"
+        isChildPage="true"
+        upperCaseAnchorBar="false"
+    >
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle
+                id="_IDGenObjectPageDynamicHeaderTitle1"
+            >
+                <expandedHeading>
+                    <m:Title
+                        id="_IDGenTitle"
+                        text="Movies"
+                        level="H1"
+                    />
+                </expandedHeading>
+            </ObjectPageDynamicHeaderTitle>
+        </headerTitle>
+
+        <headerContent>
+
+        <m:HBox id="_IDGenHBox"
+        width="100%"
+        alignItems="Center"
+        justifyContent="SpaceBetween"
+        class="sapUiSmallMarginBottom">
+
+        <!-- Logo as image -->
+            <m:Image
+                id="companyLogo"
+                src="/img/lufthansa_cinema.png"
+                densityAware="false"
+                width="150px"
+                height="50px"
+                decorative="false"
+                alt="Company Logo"
+                class="sapUiSmallMargin"/>
+                
+            <l:VerticalLayout id="_IDGenVerticalLayout">
+			
+                <m:Carousel
+                    id="_IDGenCarousel1"
+                    pages="{MoviesJSONModel>/}"
+                    loop="true"
+                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+				    height="600%"                     
+                    width="100%"
+                                      
+                >
+                    <m:pages>
+                        <m:GenericTile
+                            id="_IDGenGenericTile"
+                            backgroundImage="{path: 'MoviesJSONModel>MovieID', 
+                                    formatter: '.formatter.imageURL'}"
+                            frameType="TwoByOne"
+                            press=".onTilePress"
+                            header="{MoviesJSONModel>Title}"
+                            width="600%"
+							 
+                        />
+					
+                    </m:pages>
+                </m:Carousel>
+				
+            </l:VerticalLayout>
+
+            <m:Button 
+                id="btnTICKETS"
+                text="My Tickets"
+                icon="sap-icon://save"
+                press=".onMyTickets"
+                type="Emphasized"
+                tooltip="Save changes"
+                class="sapUiSmallMargin"/>
+</m:HBox>
+            <m:Toolbar id="_IDGenToolbar">
+                <m:Title
+                    id="_IDGenTitle1"
+                    text="Cinema Movies List"
+                    level="H2"
+                />
+                <m:ToolbarSpacer id="_IDGenToolbarSpacer" />
+                <m:SearchField
+                    id="_IDGenSearchField"
+                    width="15rem"
+                    liveChange="onSearchMovie"
+                />
+            </m:Toolbar>
+        </headerContent>
+
+        <sections>
+            <ObjectPageSection
+                id="_IDGenObjectPageSection"
+                title="Movies Table"
+            >
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSection">
+                        <blocks>
+                            <m:Table
+                                id="MoviesTable"
+                                items="{ path: 'MoviesJSONModel>/' }"
+                                inset="false"
+                            >
+                                <m:columns>
+                                    <m:Column
+                                        id="_IDGenColumn"
+                                        width="6rem"
+                                    >
+                                        <m:Text
+                                            id="_IDGenText"
+                                            text="Poster"
+                                        />
+                                    </m:Column>
+                                    <m:Column id="_IDGenColumn1">
+                                        <m:Text
+                                            id="_IDGenText1"
+                                            text="Title"
+                                        />
+                                    </m:Column>
+                                    <m:Column id="_IDGenColumn2">
+                                        <m:Text
+                                            id="_IDGenText2"
+                                            text="Release Date"
+                                        />
+                                    </m:Column>
+                                    <m:Column id="_IDGenColumn3">
+                                        <m:Text
+                                            id="_IDGenText3"
+                                            text="Duration"
+                                        />
+                                    </m:Column>
+                                    <m:Column id="_IDGenColumn4">
+                                        <m:Text
+                                            id="_IDGenText4"
+                                            text="Status"
+                                        />
+                                    </m:Column>
+                                </m:columns>
+
+                                <m:items>
+                                    <m:ColumnListItem
+                                        id="_IDGenColumnListItem"
+                                        type="Navigation"
+                                        press="onMoviePress"
+                                    >
+                                        <m:cells>
+                                            <m:Image
+                                                id="_IDGenImage"
+                                                width="80px"
+                                                height="120px"
+                                                src="{ path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL' }"
+                                            />
+                                            <m:Text
+                                                id="_IDGenText5"
+                                                text="{MoviesJSONModel>Title}"
+                                            />
+                                            <m:Text
+                                                id="_IDGenText6"
+                                                text="{path: 'MoviesJSONModel>ReleaseDate', formatter: '.formatter.formatTableDates'}"
+                                            />
+                                            <m:ObjectNumber
+                                                id="_IDGenObjectNumber"
+                                                number="{MoviesJSONModel>DurationMin}"
+                                                unit="min"
+                                            />
+                                            <m:Text
+                                                id="_IDGenText7"
+                                                text="{MoviesJSONModel>Status}"
+                                            />
+                                        </m:cells>
+                                    </m:ColumnListItem>
+                                </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
 </mvc:View>
