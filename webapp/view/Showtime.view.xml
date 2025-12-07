@@ -1,0 +1,173 @@
+<mvc:View controllerName="clientcinema.controller.Showtime"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.uxap"
+    xmlns:m="sap.m">
+    <ObjectPageLayout id="ObjectPageLayoutShowtime"
+                    showTitleInHeaderContent="true"
+                    alwaysShowContentHeader="false"
+                    preserveHeaderStateOnScroll="false"
+                    headerContentPinnable="true"
+                    isChildPage="true"
+                    upperCaseAnchorBar="false">
+        <headerTitle>
+            <ObjectPageDynamicHeaderTitle id="_IDGenObjectPageDynamicHeaderTitleShowtime">
+                <expandedHeading>
+                    <m:Title id="_IDGenTitle11" text="{ShowtimeModel>/Title}" wrapping="true" class="sapUiSmallMarginEnd"/>
+                </expandedHeading>
+                <snappedHeading>
+                    <m:FlexBox id="_IDGenFlexBox" wrap="Wrap" fitContainer="true" alignItems="Center">
+                        <m:FlexBox id="_IDGenFlexBox1" wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+                            <m:Avatar id="_IDGenAvatar" src="{ path: 'ShowtimeModel>/MovieID', formatter: '.formatter.imageURL' }" displaySize="M" displayShape="Square"/>
+                            <m:Title id="_IDGenTitle14" text="{ShowtimeModel>/Title}" wrapping="true" class="sapUiTinyMarginBegin sapUiTinyMarginEnd"/>
+                        </m:FlexBox>
+                    </m:FlexBox>
+                </snappedHeading>
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+
+
+<m:FlexBox 
+    id="_IDGenFlexBox2" 
+    wrap="NoWrap" 
+    fitContainer="true" 
+    alignItems="Start"
+    class="sapUiSmallMarginBottom">
+    
+    
+
+    <m:Avatar 
+        id="_IDGenAvatar2" 
+        src="{ path: 'ShowtimeModel>/MovieID', formatter: '.formatter.imageURL' }" 
+        displaySize="XL" 
+        displayShape="Square"
+        class="sapUiMediumMarginEnd"/>
+    
+    <m:VBox 
+        id="_IDGenVBox" 
+        justifyContent="Start"
+        class="sapUiSmallMarginBegin"
+        width="100%">
+        
+                
+        <m:HBox id="_IDGenHBox2" 
+            wrap="Wrap"
+            alignItems="Center"
+            class="sapUiSmallMarginTop">
+            
+            <m:ObjectStatus id="_IDGenObjectStatus"
+                icon="sap-icon://date-time"
+                text="{ShowtimeModel>/DurationMin} min"
+                state="Information"
+                class="sapUiTinyMarginEnd"/>
+                        
+
+        </m:HBox>
+        
+        <m:HBox id="_IDGenHBox3" 
+            class="sapUiSmallMarginTop">
+            
+            <m:Button id="_IDGenButton"
+                icon="sap-icon://video"
+                text="Trailer"
+                type="Transparent"
+                press=".openTrailer"
+                class="sapUiTinyMarginEnd"/>
+            
+        </m:HBox>
+    </m:VBox>
+
+
+
+</m:FlexBox>
+
+        <m:Text 
+            id="movieDescription"
+            text="{ShowtimeModel>/Description}"
+            wrapping="true"
+            maxLines="2"
+            class="sapUiTinyMarginBottom"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</headerContent>
+
+		<sections>
+
+            <ObjectPageSection id="_IDGenObjectPageSectionShowtime" title="General Information">
+                <subSections>
+                    <ObjectPageSubSection id="_IDGenObjectPageSubSectionShowtime">
+                        <blocks>
+                            
+
+
+                        <m:Table id="detailTable" items="{ path: 'ShowtimeModel>/to_SHOWTIMES/results' }">
+                            <m:headerToolbar>
+                                <m:Toolbar id="_IDGenToolbar1">
+                                <m:Title id="_IDGenTitleShowtime" text="Showtimes" />
+                                </m:Toolbar>
+                            </m:headerToolbar>
+
+                            <m:columns>
+                                <m:Column id="_IDGenColumnShowtime"><m:Text id="_IDGenText72" text="Hall Name"/></m:Column>
+                                <m:Column id="_IDGenColumnShowtime2"><m:Text id="_IDGenText83" text="Show Date"/></m:Column>
+                                <m:Column id="_IDGenColumnShowtime3"><m:Text id="_IDGenText84" text="Show Time"/></m:Column>
+                                <m:Column id="_IDGenColumnBtn" width="10rem"><m:Text id="_IDTextGenBtn" text=""/></m:Column>
+                            </m:columns>
+                            <m:items>
+                                <m:ColumnListItem id="_IDGenColumnListItem1">
+                                <m:cells>
+                                    <m:Text id="_IDGenText20" text="{ShowtimeModel>HallName}"/>
+                                    <m:Text id="_IDGenText21" text="{path: 'ShowtimeModel>ShowDate', formatter: '.formatter.formatTableDates'}"/>
+                                    
+                                    <m:Text id="_IDGenText22" text="{path: 'ShowtimeModel>ShowTime', formatter: '.formatter.formatTableTime'}"/>
+                                    <m:Button id="_buyTicketsBtn" 
+                                              text="Buy Tickets"
+                                              icon="sap-icon://cart" 
+                                              type="Accept" 
+                                              press="onBuyTickets"
+                                              tooltip="Purchase tickets for this showtime"
+                                              class="sapUiSmallMarginBegin"/>                                                                                                                                                                                 
+                                </m:cells>
+                                </m:ColumnListItem>
+                            </m:items>
+                            </m:Table>
+                        </blocks>
+                    </ObjectPageSubSection>
+                </subSections>
+            </ObjectPageSection>
+        </sections>
+    </ObjectPageLayout>
+</mvc:View>

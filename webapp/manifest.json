@@ -104,12 +104,23 @@
           "target": [
             "TargetMain"
           ]
+        },
+        {
+          "name": "Showtime",
+          "pattern": "Showtime/{MovieID}",
+          "target": [
+            "TargetShowtime"
+          ]
         }
       ],
       "targets": {
         "TargetMain": {
           "id": "Main",
           "name": "Main"
+        },
+        "TargetShowtime": {
+          "id": "Showtime",
+          "name": "Showtime"
         }
       }
     },

@@ -88,12 +88,15 @@ sap.ui.define([
 			MessageToast.show("The generic tile two pressed.");
 		},
 
-                                                                                                                            // }
-        onMoviePress: function (oEvent) {
+        onMoviePress: function (oItem) {
             // const MovieID = oEvent.getSource().getBindingContext().getProperty("MovieID");
-            // Navigation logic...
-            // this.getOwnerComponent().getRouter().navTo("MovieDetails", { MovieID: MovieID });
-            sap.m.MessageToast.show("ADD NAV.");
+            // this.getOwnerComponent().getRouter().navTo("MovieDetails", {
+            //  MovieID: MovieID });
+            // sap.m.MessageToast.show("ADD NAV.");
+
+            this.getOwnerComponent().getRouter().navTo("Showtime", {
+                MovieID: oItem.getSource().getBindingContext("MoviesJSONModel").getProperty().MovieID
+            });
         }
 
     });
