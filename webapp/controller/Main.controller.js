@@ -15,7 +15,7 @@ sap.ui.define([
             this.getView().addEventDelegate({
                 onAfterRendering: this.startAutoSlide.bind(this)
             });
-            
+
             var oMoviesJSONModel = new sap.ui.model.json.JSONModel();
             var that = this;
             //read the data from Back End (READ_GET_ENTITYSET)
@@ -49,44 +49,44 @@ sap.ui.define([
             }
         },
 
-        startAutoSlide: function() {
+        startAutoSlide: function () {
             var oCarousel = this.byId("_IDGenCarousel1");
             if (!oCarousel) return;
-            
+
             // Clear any existing interval first
             this.stopAutoSlide();
-            
+
             // Set interval to slide every 3 seconds (3000ms)
-            this._slideInterval = setInterval(function() {
+            this._slideInterval = setInterval(function () {
                 oCarousel.next(); // Move to next slide
             }, 3000);
         },
 
-        stopAutoSlide: function() {
+        stopAutoSlide: function () {
             if (this._slideInterval) {
                 clearInterval(this._slideInterval);
                 this._slideInterval = null;
             }
         },
-        
+
         // Optional: Pause on hover
-        onCarouselHover: function() {
+        onCarouselHover: function () {
             this.stopAutoSlide();
         },
-        
+
         // Optional: Resume when mouse leaves
-        onCarouselLeave: function() {
+        onCarouselLeave: function () {
             this.startAutoSlide();
         },
-        
-        onDestroy: function() {
+
+        onDestroy: function () {
             // Clean up when controller is destroyed
             this.stopAutoSlide();
         },
 
-        onTilePress: function(evt) {
-			MessageToast.show("The generic tile two pressed.");
-		},
+        onTilePress: function (evt) {
+            MessageToast.show("The generic tile two pressed.");
+        },
 
         onMoviePress: function (oItem) {
             // const MovieID = oEvent.getSource().getBindingContext().getProperty("MovieID");

@@ -1,0 +1,100 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+    <Dialog id="createDialog" title="Buy Tickets">
+        <content>
+            <form:SimpleForm id="simpleFormCreateDialog">
+                <form:content>
+                    <VBox
+                        id="_IDGenDialogVBox1"
+                        justifyContent="Start"
+                        class="sapUiSmallMarginBegin"
+                        width="100%">
+
+                        <!-- Movie Name -->
+                        <HBox
+                            id="_IDGenDialogHBox1"
+                            wrap="Wrap"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+                            <Label id="_IDGenDialogLabel1" text="Movie Name:" width="100px"/>
+                            <Input id="_IDInput1" value="{ShowtimeModel>/Title}" editable="false" class="sapUiSmallMarginBegin"/>
+                        </HBox>
+
+                        <!-- Hall Name -->
+                        <HBox
+                            id="_IDGenDialogHBox2"
+                            wrap="Wrap"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+                            <Label id="_IDGenDialogLabel2" text="Hall Name:" width="100px"/>
+                            <Input id="_IDInput2" editable="false" class="sapUiSmallMarginBegin"/>
+                        </HBox>
+
+                        <!-- Show Date -->
+                        <HBox
+                            id="_IDGenDialogHBox3"
+                            wrap="Wrap"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+                            <Label id="_IDGenDialogLabel3" text="Show Date:" width="100px"/>
+                            <Input id="_IDInput3" editable="false" class="sapUiSmallMarginBegin" width="90px"/>
+                        </HBox>
+
+                        <!-- Show Time -->
+                        <HBox
+                            id="_IDGenDialogHBox4"
+                            wrap="Wrap"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+                            <Label id="_IDGenDialogLabel4" text="Show Time:" width="100px"/>
+                            <Input id="_IDInput4" editable="false" class="sapUiSmallMarginBegin" width="90px"/>
+                        </HBox>
+
+                        <!-- Price and Currency -->
+                        <HBox
+                            id="_IDGenDialogHBox5"
+                            wrap="Wrap"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+                            <Label id="_IDGenDialogLabel5" text="Price/Ticket:" width="100px"/>
+                            <Input id="_IDInput5" editable="false" width="90px" class="sapUiSmallMarginBegin sapUiMediumMarginEnd"/>
+                            <Input id="_IDInput6" editable="false" width="50px" />
+                        </HBox>
+
+                        <!-- Price and Currency -->
+                        <HBox
+                            id="_IDGenDialogHBox6"
+                            wrap="Wrap"
+                            alignItems="Center"
+                            class="sapUiSmallMarginTop">
+                            <Label id="_IDGenDialogLabel6" text="Price Total:" width="100px"/>
+                            <Input id="_IDInput7" editable="false" width="90px" class="sapUiSmallMarginBegin sapUiMediumMarginEnd"/>
+                            <Input id="_IDInput8" editable="false" width="50px" />
+                        </HBox>
+
+                        <Title id="_IDGenTitle2" text="Select Seats To Buy:" level="H3" class="sapUiMediumMarginTop"/>
+
+                        <!-- Seats -->
+                        <VBox id="seatVBox" class="seatVBoxScrollPadding"/>
+                    </VBox>
+                </form:content>
+            </form:SimpleForm>
+        </content>
+
+        <beginButton>
+            <Button id="_IDGenFrButton1" text="Buy" press=".onBuyTickets" />
+        </beginButton>
+
+        <endButton>
+            <Button id="_IDGenFrButton2" text="Cancel" press=".onCancelDialog" />
+        </endButton>
+    </Dialog>
+
+</core:FragmentDefinition>
+
+
+
+

@@ -112,6 +112,7 @@
                 <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="to_Seats_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="HallID" Type="Edm.Guid" Nullable="false" sap:label="HallID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="HallName" Type="Edm.String" MaxLength="30" sap:label="HallName"/>
                 <Property Name="Capacity" Type="Edm.Int32" sap:label="Capacity"/>
@@ -129,6 +130,32 @@
                 <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zui_eh_lhind_cinema.assoc_20F9C6FA0AA2E87573056440E75F2A2D" FromRole="FromRole_assoc_20F9C6FA0AA2E87573056440E75F2A2D" ToRole="ToRole_assoc_20F9C6FA0AA2E87573056440E75F2A2D"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="cds_zui_eh_lhind_cinema.assoc_ECF93BF8051CE04AB2B09877B903C314" FromRole="FromRole_assoc_ECF93BF8051CE04AB2B09877B903C314" ToRole="ToRole_assoc_ECF93BF8051CE04AB2B09877B903C314"/>
+                <NavigationProperty Name="to_Seats" Relationship="cds_zui_eh_lhind_cinema.assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" FromRole="FromRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" ToRole="ToRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9"/>
+            </EntityType>
+            <EntityType Name="SEATS_OF_HALLType" sap:label="Projection View Of ZR_EHHALLSEATS" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SeatId"/>
+                    <PropertyRef Name="HallId"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SeatId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
+                <Property Name="HallId" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
+                <Property Name="ChairNumber" Type="Edm.Int32"/>
+                <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalLastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_Hall" Relationship="cds_zui_eh_lhind_cinema.assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" FromRole="ToRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" ToRole="FromRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zui_eh_lhind_cinema.assoc_428567C94B707931A940219CFCCF0DA8" FromRole="FromRole_assoc_428567C94B707931A940219CFCCF0DA8" ToRole="ToRole_assoc_428567C94B707931A940219CFCCF0DA8"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zui_eh_lhind_cinema.assoc_63F20964CB4B0CBEAC58D4B4576ABB24" FromRole="FromRole_assoc_63F20964CB4B0CBEAC58D4B4576ABB24" ToRole="ToRole_assoc_63F20964CB4B0CBEAC58D4B4576ABB24"/>
             </EntityType>
             <EntityType Name="MOVIESType" m:HasStream="true" sap:label="###GENERATED Core Data Service Entity" sap:content-version="1">
                 <Key>
@@ -173,8 +200,6 @@
                     <PropertyRef Name="IsActiveEntity"/>
                 </Key>
                 <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="to_SHOWTIMES_oc" Type="Edm.Boolean" sap:label="Dynamic CbA-Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="MovieID" Type="Edm.Guid" Nullable="false" sap:label="MovieID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="Title" Type="Edm.String" MaxLength="30" sap:label="Title"/>
@@ -204,14 +229,14 @@
                 <Key>
                     <PropertyRef Name="Showtimeid"/>
                     <PropertyRef Name="MovieId"/>
-                    <PropertyRef Name="HallId"/>
                     <PropertyRef Name="IsActiveEntity"/>
                 </Key>
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Showtimeid" Type="Edm.Guid" Nullable="false" sap:label="Showtimeid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
                 <Property Name="MovieId" Type="Edm.Guid" Nullable="false" sap:label="MovieID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
-                <Property Name="HallId" Type="Edm.Guid" Nullable="false" sap:label="HallId" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
+                <Property Name="HallId" Type="Edm.String" MaxLength="36" sap:label="HallId"/>
+                <Property Name="HallName" Type="Edm.String" MaxLength="30" sap:label="HallName" sap:value-list="standard"/>
                 <Property Name="ShowDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ShowDate"/>
                 <Property Name="ShowTime" Type="Edm.Time" Precision="0" sap:label="ShowTime"/>
                 <Property Name="Price" Type="Edm.Decimal" Precision="10" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Price"/>
@@ -241,8 +266,8 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Ticketid" Type="Edm.Guid" Nullable="false" sap:label="Ticketid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Showtimeid" Type="Edm.Guid" Nullable="false" sap:label="Showtimeid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="SeatID" Type="Edm.Guid" Nullable="false" sap:label="SeatID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Showtimeid" Type="Edm.Guid" Nullable="false" sap:label="Showtimeid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
+                <Property Name="SeatID" Type="Edm.Guid" Nullable="false" sap:label="SeatID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
                 <Property Name="SeatNumber" Type="Edm.Int32" sap:label="SeatNumber"/>
                 <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
@@ -292,7 +317,7 @@
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="MovieCategoryID" Type="Edm.Guid" Nullable="false" sap:label="MovieCategoryID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
                 <Property Name="MovieID" Type="Edm.Guid" Nullable="false" sap:label="MovieID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
-                <Property Name="Category" Type="Edm.String" MaxLength="30" sap:label="Category"/>
+                <Property Name="Category" Type="Edm.String" MaxLength="30" sap:label="Category" sap:value-list="standard"/>
                 <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LocalLastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
@@ -331,6 +356,55 @@
                 <NavigationProperty Name="to_movie" Relationship="cds_zui_eh_lhind_cinema.assoc_672B2BA5226DF4B86431BB09AC116E71" FromRole="ToRole_assoc_672B2BA5226DF4B86431BB09AC116E71" ToRole="FromRole_assoc_672B2BA5226DF4B86431BB09AC116E71"/>
                 <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zui_eh_lhind_cinema.assoc_C0D763DE4652F5B1A688BE618E703C73" FromRole="FromRole_assoc_C0D763DE4652F5B1A688BE618E703C73" ToRole="ToRole_assoc_C0D763DE4652F5B1A688BE618E703C73"/>
                 <NavigationProperty Name="SiblingEntity" Relationship="cds_zui_eh_lhind_cinema.assoc_7616E3498DE712C97CE403CA13B5333C" FromRole="FromRole_assoc_7616E3498DE712C97CE403CA13B5333C" ToRole="ToRole_assoc_7616E3498DE712C97CE403CA13B5333C"/>
+            </EntityType>
+            <EntityType Name="ZR_EHCATEGORIESType" sap:label="###GENERATED Core Data Service Entity" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CategoryID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CategoryID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="30" sap:value-list="standard"/>
+                <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalLastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zui_eh_lhind_cinema.assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5" FromRole="FromRole_assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5" ToRole="ToRole_assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zui_eh_lhind_cinema.assoc_6458EB874CA613E6AA4C4200CF8E1DCD" FromRole="FromRole_assoc_6458EB874CA613E6AA4C4200CF8E1DCD" ToRole="ToRole_assoc_6458EB874CA613E6AA4C4200CF8E1DCD"/>
+            </EntityType>
+            <EntityType Name="ZR_EHHALLSType" sap:label="###GENERATED Core Data Service Entity" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HallID"/>
+                    <PropertyRef Name="IsActiveEntity"/>
+                </Key>
+                <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="HallID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HallName" Type="Edm.String" MaxLength="30"/>
+                <Property Name="Capacity" Type="Edm.Int32"/>
+                <Property Name="DisabledAccess" Type="Edm.Boolean" sap:label="Truth Value" sap:quickinfo="Truth Value: True/False"/>
+                <Property Name="RowSeats" Type="Edm.Int32"/>
+                <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalLastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LocalLastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Local Instance Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="LastChangedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Changed On" sap:quickinfo="Last Change Date Time" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasDraftEntity" Type="Edm.Boolean" sap:label="Has Draft" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityCreationDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Created On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="DraftEntityLastChangeDateTime" Type="Edm.DateTimeOffset" Precision="7" sap:label="Draft Last Changed On" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="HasActiveEntity" Type="Edm.Boolean" sap:label="Has active" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="IsActiveEntity" Type="Edm.Boolean" Nullable="false" sap:label="Is active" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="DraftAdministrativeData" Relationship="cds_zui_eh_lhind_cinema.assoc_164E69BEE17CDFBE62C321BB58BBE120" FromRole="FromRole_assoc_164E69BEE17CDFBE62C321BB58BBE120" ToRole="ToRole_assoc_164E69BEE17CDFBE62C321BB58BBE120"/>
+                <NavigationProperty Name="SiblingEntity" Relationship="cds_zui_eh_lhind_cinema.assoc_070D41DDF6BCCFACE84185E521192478" FromRole="FromRole_assoc_070D41DDF6BCCFACE84185E521192478" ToRole="ToRole_assoc_070D41DDF6BCCFACE84185E521192478"/>
             </EntityType>
             <EntityType Name="SAP__Currency" sap:content-version="1">
                 <Key>
@@ -520,6 +594,20 @@
                 <End Type="cds_zui_eh_lhind_cinema.VH_HALLSType" Multiplicity="1" Role="FromRole_assoc_ECF93BF8051CE04AB2B09877B903C314"/>
                 <End Type="cds_zui_eh_lhind_cinema.VH_HALLSType" Multiplicity="0..1" Role="ToRole_assoc_ECF93BF8051CE04AB2B09877B903C314"/>
             </Association>
+            <Association Name="assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.VH_HALLSType" Multiplicity="1" Role="FromRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9">
+                    <OnDelete Action="Cascade"/>
+                </End>
+                <End Type="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType" Multiplicity="*" Role="ToRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9">
+                        <PropertyRef Name="HallID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9">
+                        <PropertyRef Name="HallId"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
             <Association Name="assoc_962BD9DF5FABE8B63C9F6790422717A8" sap:content-version="1">
                 <End Type="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType" Multiplicity="1" Role="FromRole_assoc_962BD9DF5FABE8B63C9F6790422717A8"/>
                 <End Type="cds_zui_eh_lhind_cinema.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_962BD9DF5FABE8B63C9F6790422717A8"/>
@@ -527,6 +615,14 @@
             <Association Name="assoc_952EC2065F9660A5689C0F6EC58E95F2" sap:content-version="1">
                 <End Type="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType" Multiplicity="1" Role="FromRole_assoc_952EC2065F9660A5689C0F6EC58E95F2"/>
                 <End Type="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType" Multiplicity="0..1" Role="ToRole_assoc_952EC2065F9660A5689C0F6EC58E95F2"/>
+            </Association>
+            <Association Name="assoc_164E69BEE17CDFBE62C321BB58BBE120" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" Multiplicity="1" Role="FromRole_assoc_164E69BEE17CDFBE62C321BB58BBE120"/>
+                <End Type="cds_zui_eh_lhind_cinema.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_164E69BEE17CDFBE62C321BB58BBE120"/>
+            </Association>
+            <Association Name="assoc_070D41DDF6BCCFACE84185E521192478" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" Multiplicity="1" Role="FromRole_assoc_070D41DDF6BCCFACE84185E521192478"/>
+                <End Type="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" Multiplicity="0..1" Role="ToRole_assoc_070D41DDF6BCCFACE84185E521192478"/>
             </Association>
             <Association Name="assoc_2F5C267DA147588BF151AE7D7B3049AC" sap:content-version="1">
                 <End Type="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType" Multiplicity="1" Role="FromRole_assoc_2F5C267DA147588BF151AE7D7B3049AC"/>
@@ -543,6 +639,14 @@
             <Association Name="assoc_AD53F32799E856D9DE29E4670D5B8D1A" sap:content-version="1">
                 <End Type="cds_zui_eh_lhind_cinema.MY_TICKETSType" Multiplicity="1" Role="FromRole_assoc_AD53F32799E856D9DE29E4670D5B8D1A"/>
                 <End Type="cds_zui_eh_lhind_cinema.MY_TICKETSType" Multiplicity="0..1" Role="ToRole_assoc_AD53F32799E856D9DE29E4670D5B8D1A"/>
+            </Association>
+            <Association Name="assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" Multiplicity="1" Role="FromRole_assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5"/>
+                <End Type="cds_zui_eh_lhind_cinema.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5"/>
+            </Association>
+            <Association Name="assoc_6458EB874CA613E6AA4C4200CF8E1DCD" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" Multiplicity="1" Role="FromRole_assoc_6458EB874CA613E6AA4C4200CF8E1DCD"/>
+                <End Type="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" Multiplicity="0..1" Role="ToRole_assoc_6458EB874CA613E6AA4C4200CF8E1DCD"/>
             </Association>
             <Association Name="assoc_28A18094EEBC2BD2656DC34D0096E5F5" sap:content-version="1">
                 <End Type="cds_zui_eh_lhind_cinema.MOVIESType" Multiplicity="1" Role="FromRole_assoc_28A18094EEBC2BD2656DC34D0096E5F5"/>
@@ -593,6 +697,14 @@
                         <PropertyRef Name="MovieId"/>
                     </Dependent>
                 </ReferentialConstraint>
+            </Association>
+            <Association Name="assoc_428567C94B707931A940219CFCCF0DA8" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType" Multiplicity="1" Role="FromRole_assoc_428567C94B707931A940219CFCCF0DA8"/>
+                <End Type="cds_zui_eh_lhind_cinema.I_DraftAdministrativeDataType" Multiplicity="0..1" Role="ToRole_assoc_428567C94B707931A940219CFCCF0DA8"/>
+            </Association>
+            <Association Name="assoc_63F20964CB4B0CBEAC58D4B4576ABB24" sap:content-version="1">
+                <End Type="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType" Multiplicity="1" Role="FromRole_assoc_63F20964CB4B0CBEAC58D4B4576ABB24"/>
+                <End Type="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType" Multiplicity="0..1" Role="ToRole_assoc_63F20964CB4B0CBEAC58D4B4576ABB24"/>
             </Association>
             <Association Name="assoc_C0D763DE4652F5B1A688BE618E703C73" sap:content-version="1">
                 <End Type="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType" Multiplicity="1" Role="FromRole_assoc_C0D763DE4652F5B1A688BE618E703C73"/>
@@ -724,13 +836,16 @@
                 <EntitySet Name="ZCDS_EH_MOVIES" EntityType="cds_zui_eh_lhind_cinema.ZCDS_EH_MOVIESType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="VH_CATEGORIES" EntityType="cds_zui_eh_lhind_cinema.VH_CATEGORIESType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="VH_HALLS" EntityType="cds_zui_eh_lhind_cinema.VH_HALLSType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="SEATS_OF_HALL" EntityType="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="MOVIES" EntityType="cds_zui_eh_lhind_cinema.MOVIESType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
-                <EntitySet Name="MOVIES_SHOWTIME" EntityType="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="MOVIES_SHOWTIME" EntityType="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
                 <EntitySet Name="ALL_SHOWTIMES" EntityType="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="MY_TICKETS" EntityType="cds_zui_eh_lhind_cinema.MY_TICKETSType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="MOVIE_ACTORS" EntityType="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="MOVIE_CATEGORY" EntityType="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="MOVIE_DIRECTORS" EntityType="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZR_EHCATEGORIES" EntityType="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
+                <EntitySet Name="ZR_EHHALLS" EntityType="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" sap:content-version="1" sap:deletable-path="Delete_mc" sap:updatable-path="Update_mc"/>
                 <EntitySet Name="SAP__FormatSet" EntityType="cds_zui_eh_lhind_cinema.SAP__Format" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__PDFStandardSet" EntityType="cds_zui_eh_lhind_cinema.SAP__PDFStandard" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
                 <EntitySet Name="SAP__TableColumnsSet" EntityType="cds_zui_eh_lhind_cinema.SAP__TableColumns" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
@@ -747,6 +862,10 @@
                 <AssociationSet Name="assoc_672B2BA5226DF4B86431BB09AC116E71" Association="cds_zui_eh_lhind_cinema.assoc_672B2BA5226DF4B86431BB09AC116E71" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIES" Role="FromRole_assoc_672B2BA5226DF4B86431BB09AC116E71"/>
                     <End EntitySet="MOVIE_DIRECTORS" Role="ToRole_assoc_672B2BA5226DF4B86431BB09AC116E71"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_428567C94B707931A940219CFCCF0DA8" Association="cds_zui_eh_lhind_cinema.assoc_428567C94B707931A940219CFCCF0DA8" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SEATS_OF_HALL" Role="FromRole_assoc_428567C94B707931A940219CFCCF0DA8"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_428567C94B707931A940219CFCCF0DA8"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_652669637C8D3E613023C3E9CAC1679D" Association="cds_zui_eh_lhind_cinema.assoc_652669637C8D3E613023C3E9CAC1679D" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIE_CATEGORY" Role="FromRole_assoc_652669637C8D3E613023C3E9CAC1679D"/>
@@ -767,6 +886,10 @@
                 <AssociationSet Name="assoc_4A1C0A3C829744911EDC02FD8FB2BD83" Association="cds_zui_eh_lhind_cinema.assoc_4A1C0A3C829744911EDC02FD8FB2BD83" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIES" Role="FromRole_assoc_4A1C0A3C829744911EDC02FD8FB2BD83"/>
                     <End EntitySet="MOVIE_ACTORS" Role="ToRole_assoc_4A1C0A3C829744911EDC02FD8FB2BD83"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_070D41DDF6BCCFACE84185E521192478" Association="cds_zui_eh_lhind_cinema.assoc_070D41DDF6BCCFACE84185E521192478" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZR_EHHALLS" Role="FromRole_assoc_070D41DDF6BCCFACE84185E521192478"/>
+                    <End EntitySet="ZR_EHHALLS" Role="ToRole_assoc_070D41DDF6BCCFACE84185E521192478"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_B0D18FF3614EBB3FF41E1F64630367D7" Association="cds_zui_eh_lhind_cinema.assoc_B0D18FF3614EBB3FF41E1F64630367D7" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIE_ACTORS" Role="FromRole_assoc_B0D18FF3614EBB3FF41E1F64630367D7"/>
@@ -800,6 +923,14 @@
                     <End EntitySet="ALL_SHOWTIMES" Role="FromRole_assoc_962BD9DF5FABE8B63C9F6790422717A8"/>
                     <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_962BD9DF5FABE8B63C9F6790422717A8"/>
                 </AssociationSet>
+                <AssociationSet Name="assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" Association="cds_zui_eh_lhind_cinema.assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="VH_HALLS" Role="FromRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9"/>
+                    <End EntitySet="SEATS_OF_HALL" Role="ToRole_assoc_FA5E93B7ADF9884ABE5B14A6F250F9E9"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_63F20964CB4B0CBEAC58D4B4576ABB24" Association="cds_zui_eh_lhind_cinema.assoc_63F20964CB4B0CBEAC58D4B4576ABB24" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SEATS_OF_HALL" Role="FromRole_assoc_63F20964CB4B0CBEAC58D4B4576ABB24"/>
+                    <End EntitySet="SEATS_OF_HALL" Role="ToRole_assoc_63F20964CB4B0CBEAC58D4B4576ABB24"/>
+                </AssociationSet>
                 <AssociationSet Name="assoc_64E32D0568A63D56E0AA3D2677B50B97" Association="cds_zui_eh_lhind_cinema.assoc_64E32D0568A63D56E0AA3D2677B50B97" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIES_SHOWTIME" Role="FromRole_assoc_64E32D0568A63D56E0AA3D2677B50B97"/>
                     <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_64E32D0568A63D56E0AA3D2677B50B97"/>
@@ -820,6 +951,14 @@
                     <End EntitySet="MOVIES" Role="FromRole_assoc_45232175F4F88201CFDFFDBA5ECBEC86"/>
                     <End EntitySet="MOVIES" Role="ToRole_assoc_45232175F4F88201CFDFFDBA5ECBEC86"/>
                 </AssociationSet>
+                <AssociationSet Name="assoc_6458EB874CA613E6AA4C4200CF8E1DCD" Association="cds_zui_eh_lhind_cinema.assoc_6458EB874CA613E6AA4C4200CF8E1DCD" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZR_EHCATEGORIES" Role="FromRole_assoc_6458EB874CA613E6AA4C4200CF8E1DCD"/>
+                    <End EntitySet="ZR_EHCATEGORIES" Role="ToRole_assoc_6458EB874CA613E6AA4C4200CF8E1DCD"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5" Association="cds_zui_eh_lhind_cinema.assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZR_EHCATEGORIES" Role="FromRole_assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_C5E9A3D88CFDF688BAC6EE554ECB0AF5"/>
+                </AssociationSet>
                 <AssociationSet Name="assoc_4999E840FA745E261DC37CA28E6D5B7C" Association="cds_zui_eh_lhind_cinema.assoc_4999E840FA745E261DC37CA28E6D5B7C" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MY_TICKETS" Role="FromRole_assoc_4999E840FA745E261DC37CA28E6D5B7C"/>
                     <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_4999E840FA745E261DC37CA28E6D5B7C"/>
@@ -827,6 +966,10 @@
                 <AssociationSet Name="assoc_C7E3E828BC363C318B07A9F862A3BFE2" Association="cds_zui_eh_lhind_cinema.assoc_C7E3E828BC363C318B07A9F862A3BFE2" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIES_SHOWTIME" Role="FromRole_assoc_C7E3E828BC363C318B07A9F862A3BFE2"/>
                     <End EntitySet="ALL_SHOWTIMES" Role="ToRole_assoc_C7E3E828BC363C318B07A9F862A3BFE2"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_164E69BEE17CDFBE62C321BB58BBE120" Association="cds_zui_eh_lhind_cinema.assoc_164E69BEE17CDFBE62C321BB58BBE120" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="ZR_EHHALLS" Role="FromRole_assoc_164E69BEE17CDFBE62C321BB58BBE120"/>
+                    <End EntitySet="I_DraftAdministrativeData" Role="ToRole_assoc_164E69BEE17CDFBE62C321BB58BBE120"/>
                 </AssociationSet>
                 <AssociationSet Name="assoc_C0D763DE4652F5B1A688BE618E703C73" Association="cds_zui_eh_lhind_cinema.assoc_C0D763DE4652F5B1A688BE618E703C73" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
                     <End EntitySet="MOVIE_DIRECTORS" Role="FromRole_assoc_C0D763DE4652F5B1A688BE618E703C73"/>
@@ -958,6 +1101,11 @@
                     <Parameter Name="SeatID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
                 </FunctionImport>
+                <FunctionImport Name="create_ticket" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST">
+                    <Parameter Name="Showtimeid" Type="Edm.Guid" Mode="In" Nullable="true" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                    <Parameter Name="SeatID" Type="Edm.Guid" Mode="In" Nullable="true" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
+                    <Parameter Name="SeatNumber" Type="Edm.Int32" Mode="In" Nullable="true"/>
+                </FunctionImport>
                 <FunctionImport Name="MY_TICKETSDiscard" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.MY_TICKETSType">
                     <Parameter Name="Ticketid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="Showtimeid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
@@ -981,6 +1129,48 @@
                     <Parameter Name="Ticketid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="Showtimeid" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="SeatID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHCATEGORIESActivate" ReturnType="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" EntitySet="ZR_EHCATEGORIES" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType">
+                    <Parameter Name="CategoryID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHCATEGORIESDiscard" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType">
+                    <Parameter Name="CategoryID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHCATEGORIESEdit" ReturnType="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" EntitySet="ZR_EHCATEGORIES" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="CategoryID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHCATEGORIESPrepare" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType">
+                    <Parameter Name="CategoryID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHCATEGORIESResume" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType">
+                    <Parameter Name="CategoryID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHHALLSActivate" ReturnType="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" EntitySet="ZR_EHHALLS" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHHALLSType">
+                    <Parameter Name="HallID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHHALLSDiscard" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHHALLSType">
+                    <Parameter Name="HallID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHHALLSEdit" ReturnType="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" EntitySet="ZR_EHHALLS" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" sap:applicable-path="Edit_ac">
+                    <Parameter Name="HallID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                    <Parameter Name="PreserveChanges" Type="Edm.Boolean" Mode="In" Nullable="true" sap:label="TRUE"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHHALLSPrepare" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHHALLSType">
+                    <Parameter Name="HallID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
+                <FunctionImport Name="ZR_EHHALLSResume" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.ZR_EHHALLSType">
+                    <Parameter Name="HallID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
                 </FunctionImport>
             </EntityContainer>
@@ -1096,6 +1286,7 @@
                                 <PropertyPath>Edit_ac</PropertyPath>
                                 <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_Seats_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="FilterExpressionRestrictions">
@@ -1137,6 +1328,14 @@
                                         </Record>
                                     </PropertyValue>
                                 </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Seats"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Path="to_Seats_oc"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -1153,12 +1352,108 @@
                                 <PropertyPath>Edit_ac</PropertyPath>
                                 <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
+                                <PropertyPath>to_Seats_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
                 </Annotation>
                 <Annotation Term="Capabilities.UpdateRestrictions">
                     <Record>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_Seats</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Updatable" Path="Update_mc"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/SEATS_OF_HALL" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftNode"/>
+                <Annotation Term="Common.DraftActivationVia">
+                    <Collection>
+                        <String>cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/VH_HALLS</String>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="Delete_mc"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="to_Hall"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection/>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonUpdatableNavigationProperties">
+                            <Collection>
+                                <PropertyPath>to_Hall</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
                         <PropertyValue Property="Updatable" Path="Update_mc"/>
                     </Record>
                 </Annotation>
@@ -1571,7 +1866,7 @@
                 </Annotation>
                 <Annotation Term="Capabilities.DeleteRestrictions">
                     <Record>
-                        <PropertyValue Property="Deletable" Path="Delete_mc"/>
+                        <PropertyValue Property="Deletable" Bool="false"/>
                     </Record>
                 </Annotation>
                 <Annotation Term="Capabilities.FilterRestrictions">
@@ -1579,8 +1874,6 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>Edit_ac</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_SHOWTIMES_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1600,7 +1893,7 @@
                 </Annotation>
                 <Annotation Term="Capabilities.InsertRestrictions">
                     <Record>
-                        <PropertyValue Property="Insertable" Bool="true"/>
+                        <PropertyValue Property="Insertable" Bool="false"/>
                     </Record>
                 </Annotation>
                 <Annotation Term="Capabilities.NavigationRestrictions">
@@ -1645,8 +1938,6 @@
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
                                 <PropertyPath>Edit_ac</PropertyPath>
-                                <PropertyPath>Delete_mc</PropertyPath>
-                                <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_SHOWTIMES_oc</PropertyPath>
                             </Collection>
                         </PropertyValue>
@@ -1659,7 +1950,7 @@
                                 <PropertyPath>to_SHOWTIMES</PropertyPath>
                             </Collection>
                         </PropertyValue>
-                        <PropertyValue Property="Updatable" Path="Update_mc"/>
+                        <PropertyValue Property="Updatable" Bool="false"/>
                     </Record>
                 </Annotation>
             </Annotations>
@@ -1842,6 +2133,184 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHCATEGORIES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHCATEGORIESActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHCATEGORIESDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHCATEGORIESEdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHCATEGORIESPrepare"/>
+                        <PropertyValue Property="ResumeAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHCATEGORIESResume"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="Delete_mc"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>LocalLastChangedAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="Update_mc"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHHALLS" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.DraftRoot">
+                    <Record>
+                        <PropertyValue Property="ActivationAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHHALLSActivate"/>
+                        <PropertyValue Property="DiscardAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHHALLSDiscard"/>
+                        <PropertyValue Property="EditAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHHALLSEdit"/>
+                        <PropertyValue Property="PreparationAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHHALLSPrepare"/>
+                        <PropertyValue Property="ResumeAction" String="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/ZR_EHHALLSResume"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Path="Delete_mc"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.FilterRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonFilterableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="FilterExpressionRestrictions">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityCreationDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="Property" PropertyPath="DraftEntityLastChangeDateTime"/>
+                                    <PropertyValue Property="AllowedExpressions" String="SingleRange"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.NavigationRestrictions">
+                    <Record>
+                        <PropertyValue Property="RestrictedProperties">
+                            <Collection>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="DraftAdministrativeData"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                                <Record>
+                                    <PropertyValue Property="NavigationProperty" NavigationPropertyPath="SiblingEntity"/>
+                                    <PropertyValue Property="InsertRestrictions">
+                                        <Record>
+                                            <PropertyValue Property="Insertable" Bool="false"/>
+                                        </Record>
+                                    </PropertyValue>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.OptimisticConcurrency">
+                    <Collection>
+                        <PropertyPath>LocalLastChangedAt</PropertyPath>
+                    </Collection>
+                </Annotation>
+                <Annotation Term="Capabilities.SortRestrictions">
+                    <Record>
+                        <PropertyValue Property="NonSortableProperties">
+                            <Collection>
+                                <PropertyPath>Edit_ac</PropertyPath>
+                                <PropertyPath>Delete_mc</PropertyPath>
+                                <PropertyPath>Update_mc</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Path="Update_mc"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.I_DraftAdministrativeDataType/CreatedByUser" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.ValueList">
                     <Record>
@@ -1881,6 +2350,127 @@
                         </PropertyValue>
                     </Record>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/HallName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZR_EHHALLS"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="HallId"/>
+                                    <PropertyValue Property="ValueListProperty" String="HallID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="HallName"/>
+                                    <PropertyValue Property="ValueListProperty" String="HallName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Capacity"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="DisabledAccess"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="RowSeats"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedBy"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedAt"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedBy"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedAt"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastChangedAt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/Category" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZR_EHCATEGORIES"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Category"/>
+                                    <PropertyValue Property="ValueListProperty" String="Name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CategoryID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedBy"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedAt"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedBy"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedAt"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastChangedAt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/Name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueListForValidation" String=""/>
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZR_EHCATEGORIES"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Name"/>
+                                    <PropertyValue Property="ValueListProperty" String="Name"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CategoryID"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedBy"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedAt"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedBy"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedAt"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="LastChangedAt"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.AcceptableMediaTypes">
@@ -1959,6 +2549,26 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ChangedAt" Path="LastChangedAt"/>
+                <Annotation Term="Common.CreatedAt" Path="LocalCreatedAt"/>
+                <Annotation Term="Common.CreatedBy" Path="LocalCreatedBy"/>
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="ZEHCATEGORIES"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ChangedAt" Path="LastChangedAt"/>
+                <Annotation Term="Common.CreatedAt" Path="LocalCreatedAt"/>
+                <Annotation Term="Common.CreatedBy" Path="LocalCreatedBy"/>
+                <Annotation Term="Common.SAPObjectNodeType">
+                    <Record>
+                        <PropertyValue Property="Name" String="ZEHHALLS"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/to_actors" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
             </Annotations>
@@ -1969,6 +2579,9 @@
                 <Annotation Term="Common.Composition"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/to_SHOWTIMES" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.Composition"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/to_Seats" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.Composition"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/Currency" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2061,9 +2674,6 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/Movieactorid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/Category" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="SAP__core.ComputedDefaultValue"/>
-            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/DraftEntityCreationDateTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
@@ -2137,6 +2747,84 @@
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/Moviedirectorid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/DraftEntityCreationDateTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/DraftEntityLastChangeDateTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/HasActiveEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/HasDraftEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/IsActiveEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/SeatID" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/SeatNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/Showtimeid" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/ChairNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/DraftEntityCreationDateTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/DraftEntityLastChangeDateTime" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/HallId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/HasActiveEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/HasDraftEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/IsActiveEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/SeatId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities/I_DraftAdministrativeData" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2256,40 +2944,6 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/TrailerUrl" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
             </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/Description" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/DurationMin" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/PosterAttachment" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/PosterFilename" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/PosterMimetype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-                <Annotation Term="SAP__core.IsMediaType"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/ReleaseDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/StartDate" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/Status" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/Title" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/TrailerUrl" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/SeatNumber" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/Name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
             </Annotations>
@@ -2304,6 +2958,21 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/RowSeats" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/Capacity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/DisabledAccess" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/HallName" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/RowSeats" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/PosterMimetype" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.IsMediaType"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
@@ -2352,16 +3021,25 @@
                     </Record>
                 </Annotation>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2372,6 +3050,9 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
@@ -2385,6 +3066,12 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
             </Annotations>
@@ -2393,6 +3080,9 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
@@ -2406,6 +3096,9 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
             </Annotations>
@@ -2417,6 +3110,9 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
@@ -2436,11 +3132,17 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/LocalLastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
@@ -2451,6 +3153,9 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
             </Annotations>
@@ -2459,6 +3164,9 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LastChangedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
@@ -2478,6 +3186,9 @@
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/LocalCreatedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_USER&amp;origin=TRL_100"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MY_TICKETSType/LocalCreatedAt" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_CREATION_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
@@ -2488,6 +3199,9 @@
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_TSTMPL&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/LocalLastChangedBy" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__common.DocumentationRef" String="urn:sap-com:documentation:key?=type=DE&amp;id=ABP_LOCINST_LASTCHANGE_USER&amp;origin=TRL_100"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.SAP__Currency/CurrencyCode" xmlns="http://docs.oasis-open.org/odata/ns/edm">

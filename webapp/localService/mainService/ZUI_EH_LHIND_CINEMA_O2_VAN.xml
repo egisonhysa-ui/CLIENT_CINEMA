@@ -154,6 +154,24 @@
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/CategoryID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LocalCreatedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LocalCreatedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LocalLastChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LocalLastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/LastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_CATEGORIESType/Edit_ac">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -282,6 +300,24 @@
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/HallID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalCreatedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalCreatedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalLastChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LocalLastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/LastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/Edit_ac">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -289,6 +325,9 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/to_Seats_oc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType">
@@ -404,7 +443,6 @@
                 </Annotation>
                 <Annotation Term="UI.SelectionFields">
                     <Collection>
-                        <PropertyPath>HallID</PropertyPath>
                         <PropertyPath>HallName</PropertyPath>
                         <PropertyPath>Capacity</PropertyPath>
                         <PropertyPath>DisabledAccess</PropertyPath>
@@ -416,6 +454,32 @@
                         <PropertyPath>LastChangedAt</PropertyPath>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.SEATS_OF_HALLType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/HasDraftEntity">
                 <Annotation Term="UI.HiddenFilter"/>
@@ -435,6 +499,9 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/IsActiveEntity">
                 <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/MovieID">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/PosterFilename">
@@ -475,6 +542,9 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/to_directors_oc">
                 <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType/PosterAttachment">
+                <Annotation Term="UI.IsImageURL"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType">
                 <Annotation Term="UI.Facets">
@@ -550,9 +620,10 @@
                             <PropertyValue Property="Label" String="StartDate"/>
                             <PropertyValue Property="Value" Path="StartDate"/>
                         </Record>
-                        <Record Type="UI.DataField">
+                        <Record Type="UI.DataFieldWithUrl">
                             <PropertyValue Property="Label" String="TrailerUrl"/>
                             <PropertyValue Property="Value" Path="TrailerUrl"/>
+                            <PropertyValue Property="Url" Path="TrailerUrl"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Status"/>
@@ -613,9 +684,10 @@
                             <PropertyValue Property="Label" String="StartDate"/>
                             <PropertyValue Property="Value" Path="StartDate"/>
                         </Record>
-                        <Record Type="UI.DataField">
+                        <Record Type="UI.DataFieldWithUrl">
                             <PropertyValue Property="Label" String="TrailerUrl"/>
                             <PropertyValue Property="Value" Path="TrailerUrl"/>
+                            <PropertyValue Property="Url" Path="TrailerUrl"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Status"/>
@@ -658,7 +730,6 @@
                         <PropertyPath>DurationMin</PropertyPath>
                         <PropertyPath>ReleaseDate</PropertyPath>
                         <PropertyPath>StartDate</PropertyPath>
-                        <PropertyPath>TrailerUrl</PropertyPath>
                         <PropertyPath>Status</PropertyPath>
                         <PropertyPath>PosterFilename</PropertyPath>
                         <PropertyPath>PosterMimetype</PropertyPath>
@@ -690,6 +761,9 @@
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/MovieID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/PosterFilename">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -712,12 +786,6 @@
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/Edit_ac">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/Delete_mc">
-                <Annotation Term="UI.Hidden"/>
-            </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/Update_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIES_SHOWTIMEType/to_SHOWTIMES_oc">
@@ -787,9 +855,10 @@
                             <PropertyValue Property="Label" String="StartDate"/>
                             <PropertyValue Property="Value" Path="StartDate"/>
                         </Record>
-                        <Record Type="UI.DataField">
+                        <Record Type="UI.DataFieldWithUrl">
                             <PropertyValue Property="Label" String="TrailerUrl"/>
                             <PropertyValue Property="Value" Path="TrailerUrl"/>
+                            <PropertyValue Property="Url" Path="TrailerUrl"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Status"/>
@@ -850,9 +919,10 @@
                             <PropertyValue Property="Label" String="StartDate"/>
                             <PropertyValue Property="Value" Path="StartDate"/>
                         </Record>
-                        <Record Type="UI.DataField">
+                        <Record Type="UI.DataFieldWithUrl">
                             <PropertyValue Property="Label" String="TrailerUrl"/>
                             <PropertyValue Property="Value" Path="TrailerUrl"/>
+                            <PropertyValue Property="Url" Path="TrailerUrl"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="Status"/>
@@ -927,6 +997,33 @@
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/Showtimeid">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/MovieId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/HallId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/Currency">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LocalCreatedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LocalCreatedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LocalLastChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LocalLastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/LastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -952,6 +1049,10 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="HallId"/>
                             <PropertyValue Property="Value" Path="HallId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="HallName"/>
+                            <PropertyValue Property="Value" Path="HallName"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="ShowDate"/>
@@ -999,6 +1100,10 @@
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="HallId"/>
                             <PropertyValue Property="Value" Path="HallId"/>
+                        </Record>
+                        <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="HallName"/>
+                            <PropertyValue Property="Value" Path="HallName"/>
                         </Record>
                         <Record Type="UI.DataField">
                             <PropertyValue Property="Label" String="ShowDate"/>
@@ -1200,6 +1305,27 @@
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/Movieactorid">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/MovieId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalCreatedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalCreatedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalLastChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LocalLastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/LastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_ACTORSType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -1293,6 +1419,27 @@
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/IsActiveEntity">
                 <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/MovieCategoryID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/MovieID">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LocalCreatedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LocalCreatedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LocalLastChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LocalLastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/LastChangedAt">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_CATEGORYType/Delete_mc">
@@ -1390,6 +1537,27 @@
                 <Annotation Term="UI.HiddenFilter"/>
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/Moviedirectorid">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/MovieId">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalCreatedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalCreatedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalLastChangedBy">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LocalLastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/LastChangedAt">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIE_DIRECTORSType/Delete_mc">
                 <Annotation Term="UI.Hidden"/>
             </Annotations>
@@ -1464,6 +1632,64 @@
                         </Record>
                     </Collection>
                 </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/Edit_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/HasDraftEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/DraftEntityCreationDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/DraftEntityLastChangeDateTime">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/HasActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/IsActiveEntity">
+                <Annotation Term="UI.HiddenFilter"/>
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/Edit_ac">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/Delete_mc">
+                <Annotation Term="UI.Hidden"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/Update_mc">
+                <Annotation Term="UI.Hidden"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.cds_zui_eh_lhind_cinema_Entities">
                 <Annotation Term="UI.LeadingEntitySet" String="MOVIES"/>
