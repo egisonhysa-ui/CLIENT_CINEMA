@@ -11,6 +11,8 @@ sap.ui.define([
 
         onInit() {
 
+            sap.ui.core.BusyIndicator.show(0);
+
             // Start auto-slide when view is loaded
             this.getView().addEventDelegate({
                 onAfterRendering: this.startAutoSlide.bind(this)
@@ -24,11 +26,12 @@ sap.ui.define([
             oDataModel.read(sPath, {
                 sorters: [new sap.ui.model.Sorter("MovieID", false)],
                 success: function (oresponse) {
-                    console.log(oresponse);
+                    // console.log(oresponse);
                     //attach the data to the model
                     oMoviesJSONModel.setData(oresponse.results);
                     //attach the Model to the View
                     that.getView().setModel(oMoviesJSONModel, "MoviesJSONModel");
+                    sap.ui.core.BusyIndicator.hide();
                 },
                 error: function (oerror) {
                     console.log("error")
@@ -84,20 +87,28 @@ sap.ui.define([
             this.stopAutoSlide();
         },
 
-        onTilePress: function (evt) {
-            MessageToast.show("The generic tile two pressed.");
+        onTilePress: function (oEvent) {
+            // Get the selected MovieID from the tile's binding context
+            var sMovieID = oEvent.getSource().getBindingContext("MoviesJSONModel").getProperty().MovieID;
+
+            // Navigate to the Showtime route
+            this.getOwnerComponent().getRouter().navTo("Showtime", {
+                MovieID: sMovieID
+            });
         },
 
         onMoviePress: function (oItem) {
-            // const MovieID = oEvent.getSource().getBindingContext().getProperty("MovieID");
-            // this.getOwnerComponent().getRouter().navTo("MovieDetails", {
-            //  MovieID: MovieID });
-            // sap.m.MessageToast.show("ADD NAV.");
 
             this.getOwnerComponent().getRouter().navTo("Showtime", {
                 MovieID: oItem.getSource().getBindingContext("MoviesJSONModel").getProperty().MovieID
             });
-        }
+        },
+
+        onMyTickets: function (oEvent) {
+
+            this.getOwnerComponent().getRouter().navTo("MyTickets");
+        },
+
 
     });
 });

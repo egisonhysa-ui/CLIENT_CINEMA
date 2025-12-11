@@ -55,12 +55,12 @@ sap.ui.define([
                 },
 
                 success: function (oresponse) {
-                    console.log(oresponse);
+                    // console.log(oresponse);
                     //attach the data to the model
                     oMOVIE_ACTORSJSONModel.setData(oresponse);
                     //attach the Model to the View
                     that.getView().setModel(oMOVIE_ACTORSJSONModel, "MOVIE_ACTORSModel");
-                    console.log(that.getView().getModel("MOVIE_ACTORSModel"));
+                    // console.log(that.getView().getModel("MOVIE_ACTORSModel"));
                 },
                 error: function (oerror) { },
             });
@@ -84,12 +84,12 @@ sap.ui.define([
                 },
 
                 success: function (oresponse) {
-                    console.log(oresponse);
+                    // console.log(oresponse);
                     //attach the data to the model
                     oMOVIE_DIRECTORSJSONModel.setData(oresponse);
                     //attach the Model to the View
                     that.getView().setModel(oMOVIE_DIRECTORSJSONModel, "MOVIE_DIRECTORSModel");
-                    console.log(that.getView().getModel("MOVIE_DIRECTORSModel"));
+                    // console.log(that.getView().getModel("MOVIE_DIRECTORSModel"));
                 },
                 error: function (oerror) { },
             });
@@ -113,12 +113,12 @@ sap.ui.define([
                 },
 
                 success: function (oresponse) {
-                    console.log(oresponse);
+                    // console.log(oresponse);
                     //attach the data to the model
                     oMOVIE_CATEGORYJSONModel.setData(oresponse);
                     //attach the Model to the View
                     that.getView().setModel(oMOVIE_CATEGORYJSONModel, "MOVIE_CATEGORYModel");
-                    console.log(that.getView().getModel("MOVIE_CATEGORYModel"));
+                    // console.log(that.getView().getModel("MOVIE_CATEGORYModel"));
                 },
                 error: function (oerror) { },
             });
@@ -140,12 +140,13 @@ sap.ui.define([
                 },
 
                 success: function (oresponse) {
-                    console.log(oresponse);
+                    // console.log(oresponse);
                     //attach the data to the model
                     oShowtimeJSONModel.setData(oresponse);
                     //attach the Model to the View
                     that.getView().setModel(oShowtimeJSONModel, "ShowtimeModel");
-                    console.log(that.getView().getModel("ShowtimeModel"));
+                    // console.log(that.getView().getModel("ShowtimeModel"));
+
                     sap.ui.core.BusyIndicator.hide();
                 },
                 error: function (oerror) { },
@@ -222,6 +223,10 @@ sap.ui.define([
         //************************************************** */
         onOpenTicketDialog: async function (oEvent) {
 
+            sap.ui.core.BusyIndicator.show(0);
+
+            this.gFullPrice = 0;
+
             this.gShowTimeId = oEvent.getSource().getBindingContext("ShowtimeModel").getObject().Showtimeid;
 
             this.gBookedSeatIds = await this._onGetBookedSeat(this.gShowTimeId);
@@ -289,7 +294,9 @@ sap.ui.define([
                     this.byId("_IDInput4").setValue(sShowTimeFormatted);
                     this.byId("_IDInput5").setValue(this.gOnePrice);
                     this.byId("_IDInput6").setValue(sCurrency);
-                    this.byId("_IDInput7").setValue(this.gFullPrice);
+
+                    var sFullPrice = (this.gFullPrice).toFixed(2);
+                    this.byId("_IDInput7").setValue(sFullPrice);
                     this.byId("_IDInput8").setValue(sCurrency);
 
                     // Call renderSeatGrid here
@@ -315,7 +322,7 @@ sap.ui.define([
                     this.oDialog.open();
                 }
 
-
+                sap.ui.core.BusyIndicator.hide();
 
             }.bind(this));
 
@@ -328,7 +335,7 @@ sap.ui.define([
 
 
         renderSeatGrid: function () {
-            // Make sure dialog exists
+
             if (!this.oDialog) {
                 console.error("Dialog not found!");
                 return;
@@ -360,7 +367,6 @@ sap.ui.define([
                 for (var j = i; j < i + RowSeats && j < aSeats.length; j++) {
                     var oSeat = aSeats[j];
 
-                    // SIMPLIFIED: Create button without CustomData
                     var oButton = new sap.m.Button({
                         text: oSeat.seatNumber.toString(),
                         type: this.getSeatType(oSeat),
@@ -370,7 +376,6 @@ sap.ui.define([
                         class: "sapUiSmallMarginBegin"
                     });
 
-                    // Set tooltip
                     var sTooltip = "Seat " + oSeat.seatNumber + " (ID: " + oSeat.seatId + ")";
                     if (oSeat.isBooked) {
                         sTooltip += " - Booked (RED)";
@@ -427,11 +432,9 @@ sap.ui.define([
 
         onBuyTickets: function () {
 
-            // Get selected seats directly from model
             var oModel = this.getView().getModel("seatModel");
             var aSeats = oModel.getProperty("/seats");
 
-            // Filter selected seats that are not booked
             var aSelectedSeats = [];
             for (var i = 0; i < aSeats.length; i++) {
                 if (aSeats[i].selected && !aSeats[i].isBooked) {
@@ -448,7 +451,6 @@ sap.ui.define([
                 return;
             }
 
-            // Get dialog values
             var sMovieTitle = this.byId("_IDInput1").getValue();
             var sHallName = this.byId("_IDInput2").getValue();
             var sShowDate = this.byId("_IDInput3").getValue();
@@ -459,14 +461,13 @@ sap.ui.define([
             // Show seat information
             var sSeatInfo = "Selected seats:\n";
             aSelectedSeats.forEach(function (oSeat, iIndex) {
-                sSeatInfo += (iIndex + 1) + ". Seat " + oSeat.seatNumber +
-                    " (ID: " + oSeat.seatId + ")\n";
+                sSeatInfo += (iIndex + 1) + ". Seat " + oSeat.seatNumber
+                    // + " (ID: " + oSeat.seatId + ")"
+                    + "\n";
             });
 
-            // Calculate total
             var fTotal = parseFloat(sPrice) * aSelectedSeats.length;
 
-            // Show confirmation
             var sMessage = sSeatInfo + "\n" +
                 "Movie: " + sMovieTitle + "\n" +
                 "Hall: " + sHallName + "\n" +

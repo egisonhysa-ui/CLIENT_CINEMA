@@ -67,9 +67,40 @@ sap.ui.define([
             var sUrl = `${baseUrl}/MOVIES(MovieID=guid'${sMovieID}',IsActiveEntity=true)/$value`;
             console.log("Image URL:", sUrl);
             return sUrl;
-        }
+        },
 
+        concatStrings: function (string1, string2, separator) {
+            if (!string1 && !string2) {
+                return "";
+            }
+            if (!string1) {
+                return string2 || "";
+            }
+            if (!string2) {
+                return string1 || "";
+            }
 
+            // Use provided separator or default to space
+            const sep = separator !== undefined ? separator : " ";
+
+            return string1 + sep + string2;
+        },
+
+        qrCode: function (sValue) {
+            //  console.log("QR Code formatter called with value:", sValue); // Debug log
+            //  debugger
+            //  sValue = "something";
+            if (!sValue) {
+                console.log("QR Code: Empty value provided");
+                return "";
+            }
+
+            var sEncoded = encodeURIComponent(sValue);
+            var url = "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=" + sEncoded;
+
+            // console.log("QR Code URL generated:", url); // Debug log
+            return url;
+        },
 
     };
 });

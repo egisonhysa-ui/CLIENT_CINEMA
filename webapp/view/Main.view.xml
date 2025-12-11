@@ -1,186 +1,250 @@
-<mvc:View
+
+
+       <mvc:View
     displayBlock="true"
     controllerName="clientcinema.controller.Main"
     height="100%"
-    xmlns="sap.uxap"
+    xmlns="sap.m"
     xmlns:mvc="sap.ui.core.mvc"
-    xmlns:m="sap.m"
-    xmlns:form="sap.ui.layout.form"
     xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
 >
-    <ObjectPageLayout
-        id="ObjectPageLayout"
-        showTitleInHeaderContent="true"
-        alwaysShowContentHeader="false"
-        preserveHeaderStateOnScroll="false"
-        headerContentPinnable="true"
-        isChildPage="true"
-        upperCaseAnchorBar="false"
+    <Page
+        id="mainPage"
+        title="🎬 LUFTHANSA PREMIUM CINEMA EXPERIENCE"
+        showHeader="true"
+        enableScrolling="true"
     >
-        <headerTitle>
-            <ObjectPageDynamicHeaderTitle
-                id="_IDGenObjectPageDynamicHeaderTitle1"
-            >
-                <expandedHeading>
-                    <m:Title
-                        id="_IDGenTitle"
-                        text="Movies"
-                        level="H1"
-                    />
-                </expandedHeading>
-            </ObjectPageDynamicHeaderTitle>
-        </headerTitle>
-
         <headerContent>
-
-        <m:HBox id="_IDGenHBox"
-        width="100%"
-        alignItems="Center"
-        justifyContent="SpaceBetween"
-        class="sapUiSmallMarginBottom">
-
-        <!-- Logo as image -->
-            <m:Image
-                id="companyLogo"
-                src="/img/lufthansa_cinema.png"
-                densityAware="false"
-                width="150px"
-                height="50px"
-                decorative="false"
-                alt="Company Logo"
-                class="sapUiSmallMargin"/>
-                
-            <l:VerticalLayout id="_IDGenVerticalLayout">
-			
-                <m:Carousel
-                    id="_IDGenCarousel1"
-                    pages="{MoviesJSONModel>/}"
-                    loop="true"
-                    class="sapUiTinyMarginBegin sapUiTinyMarginTop"
-				    height="600%"                     
-                    width="100%"
-                                      
-                >
-                    <m:pages>
-                        <m:GenericTile
-                            id="_IDGenGenericTile"
-                            backgroundImage="{path: 'MoviesJSONModel>MovieID', 
-                                    formatter: '.formatter.imageURL'}"
-                            frameType="TwoByOne"
-                            press=".onTilePress"
-                            header="{MoviesJSONModel>Title}"
-                            width="100%"
-							 
-                        />
-					
-                    </m:pages>
-                </m:Carousel>
-				
-            </l:VerticalLayout>
-
-            <m:Button 
+            <Button
                 id="btnTICKETS"
                 text="My Tickets"
                 icon="sap-icon://save"
                 press=".onMyTickets"
                 type="Emphasized"
-                tooltip="Save changes"
-                class="sapUiSmallMargin"/>
-</m:HBox>
-            <m:Toolbar id="_IDGenToolbar">
-                <m:Title
-                    id="_IDGenTitle1"
-                    text="Cinema Movies List"
-                    level="H2"
-                />
-                <m:ToolbarSpacer id="_IDGenToolbarSpacer" />
-                <m:SearchField
-                    id="_IDGenSearchField"
-                    width="15rem"
-                    liveChange="onSearchMovie"
-                />
-            </m:Toolbar>
+                tooltip="See My Tickets"
+                class="sapUiSmallMargin"
+            />
         </headerContent>
 
-        <sections>
-            <ObjectPageSection
-                id="_IDGenObjectPageSection"
-                title="Movies Table"
+        <!-- Section 1: Logo + Carousel -->
+        <VBox id="section1" class="sapUiSmallMargin">
+            <!-- Logo and Title Row -->
+            <!-- <HBox 
+                id="logoTitleRow" 
+                alignItems="Center" 
+                justifyContent="SpaceBetween"
+                class="sapUiSmallMarginBottom"
             >
-                <subSections>
-                    <ObjectPageSubSection id="_IDGenObjectPageSubSection">
-                        <blocks>
-                            <m:Table
-                                id="MoviesTable"
-                                items="{ path: 'MoviesJSONModel>/' }"
-                                inset="false"
-                            >
-                                <m:columns>
-                                    <m:Column
-                                        id="_IDGenColumn"
-                                        width="6rem"
-                                    >
-                                        <m:Text
-                                            id="_IDGenText"
-                                            text="Poster"
-                                        />
-                                    </m:Column>
-                                    <m:Column id="_IDGenColumn1">
-                                        <m:Text
-                                            id="_IDGenText1"
-                                            text="Title"
-                                        />
-                                    </m:Column>
-                                    <m:Column id="_IDGenColumn2">
-                                        <m:Text
-                                            id="_IDGenText2"
-                                            text="Release Date"
-                                        />
-                                    </m:Column>
-                                    <m:Column id="_IDGenColumn3">
-                                        <m:Text
-                                            id="_IDGenText3"
-                                            text="Duration"
-                                        />
-                                    </m:Column>
-                                    
-                                </m:columns>
+                <Image
+                    id="companyLogo"
+                    src="/img/lufthansa_cinema.png"
+                    densityAware="false"
+                    width="150px"
+                    height="50px"
+                    decorative="false"
+                    alt="Company Logo"
+                />
+                
+            </HBox> -->
 
-                                <m:items>
-                                    <m:ColumnListItem
-                                        id="_IDGenColumnListItem"
-                                        type="Navigation"
-                                        press="onMoviePress"
-                                    >
-                                        <m:cells>
-                                            <m:Image
-                                                id="_IDGenImage"
-                                                width="80px"
-                                                height="120px"
-                                                src="{ path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL' }"
-                                            />
-                                            <m:Text
-                                                id="_IDGenText5"
-                                                text="{MoviesJSONModel>Title}"
-                                            />
-                                            <m:Text
-                                                id="_IDGenText6"
-                                                text="{path: 'MoviesJSONModel>ReleaseDate', formatter: '.formatter.formatTableDates'}"
-                                            />
-                                            <m:ObjectNumber
-                                                id="_IDGenObjectNumber"
-                                                number="{MoviesJSONModel>DurationMin}"
-                                                unit="min"
-                                            />
-                                            
-                                        </m:cells>
-                                    </m:ColumnListItem>
-                                </m:items>
-                            </m:Table>
-                        </blocks>
-                    </ObjectPageSubSection>
-                </subSections>
-            </ObjectPageSection>
-        </sections>
-    </ObjectPageLayout>
+            <!-- Carousel -->
+            <VBox id="_IDGenVBox5" class="sapUiSmallMarginTop">
+                <Label id="_IDGenLabel1" 
+                    text="Featured Movies" 
+                    design="Bold"
+                    class="sapUiTinyMarginBottom"
+                />
+<!-- <Carousel
+    id="featuredMoviesCarousel"
+    pages="{MoviesJSONModel>/}"
+    loop="true"
+    height="400px"
+    width="100%"
+    class="sapUiSmallMarginTop"
+>
+    <pages>
+        <VBox id="_IDGenVBox6" height="400%" width="100%">
+            <GenericTile 
+                id="_IDGenGenericTile"
+                frameType="Auto"
+                press=".onTilePress"
+                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                width="100%"
+                class="fullHeightTile"
+            />
+        </VBox>
+    </pages>
+</Carousel> -->
+<!-- 
+<Carousel
+    id="featuredMoviesCarousel"
+    pages="{MoviesJSONModel>/}"
+    loop="true"
+    height="400px"
+    class="sapUiSmallMarginTop fullWidthCarousel"
+>
+    <pages>
+        <VBox id="_IDGenVBox7" height="100%" width="100%" alignItems="Stretch" justifyContent="Center">
+            <GenericTile id="_IDGenGenericTile" 
+                frameType="Auto"
+                press=".onTilePress"
+                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                class="fullSizeTile"
+            />
+        </VBox> 
+    </pages>
+</Carousel> -->
+<!-- <Carousel
+    id="featuredMoviesCarousel"
+    pages="{MoviesJSONModel>/}"
+    loop="true"
+    height="400px"
+    class="sapUiSmallMarginTop"
+>
+    <pages>
+        <FlexBox id="_IDGenFlexBox4" 
+            height="100%" 
+            width="100%"
+            alignItems="Stretch"
+        >
+            <GenericTile id="_IDGenGenericTile" 
+                frameType="Auto"
+                press=".onTilePress"
+                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                width="100%"
+                class="fullSizeTile"
+            />
+        </FlexBox>
+    </pages>
+</Carousel> -->
+
+<Carousel
+    id="featuredMoviesCarousel"
+    pages="{MoviesJSONModel>/}"
+    loop="true"
+    height="400px"
+    class="sapUiSmallMarginTop featuredCarousel"
+>
+    <pages>
+        <FlexBox id="_IDGenFlexBox4" 
+           alignItems="Stretch"
+          
+           
+           justifyContent="Center"
+           class="fullSizeTile"
+        >
+        <!-- <VBox id="_IDGdsajdisajox6" height="400%" width="100%"> -->
+            <GenericTile id="_IDGenGenericTile" 
+                frameType="OneByOne"
+                press=".onTilePress"
+                
+                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                class="carouselPage"
+            />
+             <!-- </VBox>  -->
+        </FlexBox>
+    </pages>
+</Carousel>
+
+                <!-- <Carousel
+                    id="featuredMoviesCarousel"
+                    pages="{MoviesJSONModel>/}"
+                    loop="true"
+                    height="400px"
+                    width="100%"
+                    class="sapUiSmallMarginTop"
+                >
+                    <pages>
+                        <GenericTile 
+                            id="_IDGenGenericTile"
+                            frameType="Auto"
+                            press=".onTilePress"
+                            backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                            header="" 
+                            subheader=""
+                            width="100%"
+                        />
+                    </pages>
+                </Carousel> -->
+            </VBox>
+        </VBox>
+
+        <!-- Section 2: Table with Search -->
+        <VBox id="section2" class="sapUiMediumMargin">
+            <!-- Table Header with Search -->
+            <Toolbar id="_IDGenToolbar">
+                <Title id="_IDGenTitle"
+                    text="Movies Available"
+                    level="H2"
+                />
+                <ToolbarSpacer id="_IDGenToolbarSpacer" />
+                <SearchField id="_IDGenSearchField"
+                    width="15rem"
+                    liveChange="onSearchMovie"
+                    placeholder="Search movies..."
+                />
+            </Toolbar>
+
+            <!-- Movies Table -->
+            <Table
+                id="MoviesTable"
+                items="{ path: 'MoviesJSONModel>/' }"
+                growing="true"
+                growingThreshold="20"
+                sticky="ColumnHeaders"
+                class="sapUiSmallMarginTop"
+            >
+                <columns>
+                    <Column id="_IDGenColumn"
+                        width="6rem"
+                        hAlign="Center"
+                    >
+                        <Text id="_IDGenText" text="Poster" />
+                    </Column>
+                    <Column id="_IDGenColumn1">
+                        <Text id="_IDGenText1" text="Title" />
+                    </Column>
+                    <Column id="_IDGenColumn2"
+                        width="10rem"
+                        hAlign="Center"
+                    >
+                        <Text id="_IDGenText2" text="Release Date" />
+                    </Column>
+                    <Column id="_IDGenColumn3"
+                        width="8rem"
+                        hAlign="Center"
+                    >
+                        <Text id="_IDGenText3" text="Duration" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem id="_IDGenColumnListItem"
+                        type="Navigation"
+                        press="onMoviePress"
+                    >
+                        <cells>
+                            <Image id="_IDGenImage"
+                                width="80px"
+                                height="120px"
+                                src="{ path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL' }"
+                                densityAware="false"
+                            />
+                            <Text id="_IDGenText4"
+                                text="{MoviesJSONModel>Title}"
+                                class="sapUiTinyMarginBegin"
+                            />
+                            <Text id="_IDGenText5"
+                                text="{path: 'MoviesJSONModel>ReleaseDate', formatter: '.formatter.formatTableDates'}"
+                            />
+                            <Text id="_IDGenText0"
+                                text="{path: 'MoviesJSONModel>DurationMin', formatter: '.formatter.formatDuration'}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </VBox>
+    </Page>
 </mvc:View>

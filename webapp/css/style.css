@@ -1,5 +1,347 @@
-/* Enter your custom styles here */
-
+Enter your custom styles here
 .seatVBoxScrollPadding {
     padding-right: 16px; /* reserve space for scrollbar */
+}
+
+
+
+
+
+/* For PDF export */
+.pdf-export-mode {
+    background-color: white !important;
+    padding: 20px !important;
+}
+
+.pdf-export-mode .sapMImg {
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+.printPreview {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Hide buttons during PDF capture */
+.pdf-export-mode .sapMIBar {
+    display: none !important;
+}
+
+.pdf-export-mode .sapMDialogFooter {
+    display: none !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.printPreview3 {
+    background: white;
+    width: 800px; /* A4 ratio visible on screen */
+    padding: 20px;
+    margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+
+
+.printPreview2 {
+    background-color: white;
+    padding: 20px;
+}
+
+@media print {
+    .sapMDialogScrollCont {
+        overflow: visible !important;
+    }
+    .sapMDialog {
+        position: relative !important;
+        box-shadow: none !important;
+    }
+}
+
+
+
+/* For PDF generation */
+.invisible-dialog .sapMDialogScrollCont {
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+}
+
+.printPreview4 {
+    background-color: white;
+    padding: 20px;
+    color: black;
+}
+
+.printPreview4 .sapMText {
+    color: black !important;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+
+
+/* Carousel styling */
+.featuredCarousel .sapMCrslItem {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Tile styling */
+.featuredTile {
+    border-radius: 0 !important; /* Remove rounded corners for full coverage */
+}
+
+.featuredTile .sapMGT {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Background image styling */
+.featuredTile .sapMGTBackgroundImage {
+    background-size: cover !important;
+    background-position: center !important;
+}
+
+.fullSizeTile {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100%;
+}
+
+.fullWidthCarousel .sapMCrslItem {
+    width: 100% !important;
+}
+
+/* Ensure Carousel takes full width */
+.sapMCrsl {
+    width: 100% !important;
+}
+
+.fullHeightTile {
+    height: 200%; /* Take full height of carousel page */
+}
+
+/* Cinema theme styling */
+.cinemaBackground {
+    background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+}
+
+.cinemaHeader {
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid #f44336 !important;
+}
+
+.cinemaText {
+    color: #ffd700 !important; /* Gold color for cinema theme */
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.cinemaTable {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-radius: 8px;
+}
+
+.tileGlow {
+    box-shadow: 0 4px 20px rgba(244, 67, 54, 0.4) !important;
+    transition: all 0.3s ease !important;
+}
+
+.tileGlow:hover {
+    box-shadow: 0 8px 30px rgba(244, 67, 54, 0.6) !important;
+    transform: translateY(-2px);
+}
+
+/* Cinema Theme */
+.cinemaBackground {
+    background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 50%, #16213e 100%) !important;
+    color: #ffffff !important;
+}
+
+.cinemaHeader {
+    background: rgba(20, 20, 35, 0.95) !important;
+    backdrop-filter: blur(15px);
+    border-bottom: 3px solid #ffd700 !important;
+    border-top: 1px solid rgba(255, 215, 0, 0.2) !important;
+}
+
+.cinemaText {
+    color: #ffd700 !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7) !important;
+}
+
+.cinemaTable {
+    background: rgba(255, 255, 255, 0.03) !important;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.1) !important;
+}
+
+/* Visual Effects */
+.tileGlow {
+    background: rgba(26, 26, 46, 0.8) !important;
+    border-radius: 12px !important;
+    border: 2px solid rgba(255, 215, 0, 0.3) !important;
+    box-shadow: 
+        0 6px 20px rgba(244, 67, 54, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.tileGlow:hover {
+    box-shadow: 
+        0 12px 35px rgba(244, 67, 54, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    border-color: rgba(255, 215, 0, 0.6) !important;
+}
+
+.posterImage {
+    border-radius: 10px;
+    border: 4px solid #ffd700;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+.posterImage:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 35px rgba(255, 215, 0, 0.4);
+}
+
+.posterThumbnail {
+    border-radius: 6px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.posterThumbnail:hover {
+    transform: scale(1.08);
+    border-color: #ffd700;
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+}
+
+.logoGlow {
+    filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+    transition: filter 0.3s ease;
+}
+
+.logoGlow:hover {
+    filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.9));
+}
+
+.movieRow:hover {
+    background: linear-gradient(90deg, 
+        rgba(255, 215, 0, 0.05) 0%,
+        rgba(244, 67, 54, 0.08) 50%,
+        rgba(255, 215, 0, 0.05) 100%) !important;
+    transform: scale(1.002);
+}
+
+/* Custom Scrollbar */
+.sapMList::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.sapMList::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+.sapMList::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #ffd700 0%, #ff9800 100%);
+    border-radius: 5px;
+    border: 2px solid rgba(26, 26, 46, 0.8);
+}
+
+.sapMList::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #ff9800 0%, #f44336 100%);
+}
+
+/* Time Slot Styling */
+.timeSlot {
+    background: rgba(255, 215, 0, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 0.875rem;
+    color: #ffd700;
+    min-width: 50px;
+    text-align: center;
+}
+
+.timeSlot:hover {
+    background: rgba(255, 215, 0, 0.2);
+    border-color: #ffd700;
+}
+
+/* Enhanced Toolbar */
+.sapMTB {
+    background: transparent !important;
+}
+
+/* Object Page Customization */
+.sapUxAPObjectPageNavigation {
+    background: rgba(20, 20, 35, 0.9) !important;
+}
+
+.sapUxAPObjectPageHeaderContent {
+    background: transparent !important;
+}
+
+/* Button Enhancements */
+.sapMBtnEmphasized {
+    background: linear-gradient(135deg, #ffd700 0%, #ff9800 100%) !important;
+    border: none !important;
+    color: #000000 !important;
+    font-weight: bold !important;
+    text-shadow: none !important;
+}
+
+.sapMBtnEmphasized:hover {
+    background: linear-gradient(135deg, #ff9800 0%, #f44336 100%) !important;
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4) !important;
+}
+
+/* Status Colors */
+.sapMObjStatusSuccess {
+    color: #4caf50 !important;
+}
+
+.sapMObjStatusError {
+    color: #f44336 !important;
+}
+
+.sapMObjStatusWarning {
+    color: #ff9800 !important;
+}
+
+.sapMObjStatusInformation {
+    color: #2196f3 !important;
+}
+
+/* Progress Indicator */
+.sapMPIBarNeutral {
+    background: rgba(255, 215, 0, 0.2) !important;
+}
+
+.sapMPIText {
+    color: #ffd700 !important;
 }

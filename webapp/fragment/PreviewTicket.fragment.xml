@@ -1,0 +1,79 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:form="sap.ui.layout.form">
+
+    <Dialog id="_IDGenDialogPreview" title="Preview" stretch="false">
+        <VBox id="_IDGenVBoxPre" class="printPreview">
+
+            <HBox id="_IDGenHBoxPre1" justifyContent="SpaceBetween" alignItems="Stretch">
+
+                <VBox id="_IDGenVBoxPre1" class="sapUiSmallMarginEnd" justifyContent="Start">
+
+                                    <HBox id="_IDGenHBoxPre2"
+                                        wrap="Wrap"
+                                        alignItems="Center"
+                                        class="sapUiSmallMarginTop">
+                                        <Image
+                                            id="companyLogoTicked"
+                                            src="/img/lufthansa_cinema.png"
+                                            densityAware="false"
+                                            width="130px"
+                                            height="130px"
+                                            decorative="false"
+                                            alt="Company Logo"
+                                            />
+                                        <Text id="_IDGenTextPre" text="LUFTHANSA CINEMA"/>
+                                    </HBox>
+
+                                    <HBox id="_IDGenHBoxPre3"
+                                        wrap="Wrap"
+                                        alignItems="Center"
+                                        class="sapUiSmallMarginTop">
+                                        <Title id="_IDGenTitlePre" 
+                                            text="Movie: {PreviewModel>/ticketData/Title}"
+                                            titleStyle="H5"
+                                            width="200px"
+                                            wrapping="true"/>
+                                    </HBox>
+
+                                    <HBox id="_IDGenHBoxPre4" wrap="Wrap" alignItems="Center" class="sapUiSmallMarginTop">
+                                        <Label id="_IDGenLabelPre1" text="Show Date: {path: 'PreviewModel>/ticketData/ShowDate', formatter: '.formatter.formatTableDates'}" 
+                                            class="sapUiMediumMarginEnd"/>
+                                        <Label id="_IDGenLabelPre2" text="Show Time: {path: 'PreviewModel>/ticketData/ShowTime', formatter: '.formatter.formatTableTime'}" 
+                                            class="sapUiMediumMarginEnd"/>
+                                    </HBox>
+
+                                    <HBox id="_IDGenHBoxPre5"  wrap="Wrap" alignItems="Center" class="sapUiSmallMarginTop">
+                                        <Label id="_IDGenLabelPre3"  text="Hall:    {PreviewModel>/ticketData/HallName}" 
+                                            class="sapUiMediumMarginEnd"/>
+                                        <Label id="_IDGenLabelPre4"  text="Seat: {PreviewModel>/ticketData/SeatNumber}" 
+                                            class="sapUiMediumMarginEnd"/>
+                                    </HBox>
+
+                                    <HBox id="_IDGenHBoxPre6"   wrap="Wrap" alignItems="Center" class="sapUiSmallMarginTop">
+                                        <Label id="_IDGenLabelPre5"   text="Price:    {PreviewModel>/ticketData/Price}" 
+                                            class="sapUiMediumMarginEnd"/>
+                                        <Label id="_IDGenLabelPre6"   text="{PreviewModel>/ticketData/Currency}" 
+                                            class="sapUiMediumMarginEnd"/>
+                                    </HBox>
+                </VBox>
+                
+                <VBox id="_IDGenVBoxPre2" justifyContent="Center" alignItems="Center" width="50%">
+                    <Image id="_IDGenImageQRCode" src="{path: 'PreviewModel>/ticketData/Ticketid', formatter: '.formatter.qrCode'}"/>
+                </VBox>
+            </HBox>
+
+        </VBox> 
+
+        <beginButton>
+            <Button id="_IDGenButtonCancelPreview" text="Cancel" press="onCancelPreview"/>
+        </beginButton>
+
+        <endButton>
+            <Button id="_IDGenButtonDownloadPDF" text="Download PDF" type="Emphasized" press="onDownloadPDF"/>
+        </endButton>
+
+        </Dialog>
+
+</core:FragmentDefinition>
