@@ -9,7 +9,7 @@ sap.ui.define([
 
         onInit: function () {
 
-            sap.ui.core.BusyIndicator.show(0);
+            // sap.ui.core.BusyIndicator.show(0);
 
             var oDataModel = this.getOwnerComponent().getModel();
 
@@ -62,7 +62,7 @@ sap.ui.define([
 
                                     this.getView().setModel(new sap.ui.model.json.JSONModel(aCombined), "MyTicketsModel");
                                     // console.log("MyTicketsModel:", aCombined);
-                                    sap.ui.core.BusyIndicator.hide();
+                                    // sap.ui.core.BusyIndicator.hide();
                                 },
                                 error: (err) => console.error("Error loading movies:", err)
                             });

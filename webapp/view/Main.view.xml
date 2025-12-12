@@ -27,148 +27,60 @@
             />
         </headerContent>
 
-        <!-- Section 1: Logo + Carousel -->
-        <VBox id="section1" class="sapUiSmallMargin">
-            <!-- Logo and Title Row -->
-            <!-- <HBox 
-                id="logoTitleRow" 
-                alignItems="Center" 
-                justifyContent="SpaceBetween"
-                class="sapUiSmallMarginBottom"
-            >
-                <Image
-                    id="companyLogo"
-                    src="/img/lufthansa_cinema.png"
-                    densityAware="false"
-                    width="150px"
-                    height="50px"
-                    decorative="false"
-                    alt="Company Logo"
-                />
-                
-            </HBox> -->
-
-            <!-- Carousel -->
-            <VBox id="_IDGenVBox5" class="sapUiSmallMarginTop">
-                <Label id="_IDGenLabel1" 
-                    text="Featured Movies" 
-                    design="Bold"
-                    class="sapUiTinyMarginBottom"
-                />
-<!-- <Carousel
-    id="featuredMoviesCarousel"
-    pages="{MoviesJSONModel>/}"
-    loop="true"
-    height="400px"
-    width="100%"
-    class="sapUiSmallMarginTop"
->
-    <pages>
-        <VBox id="_IDGenVBox6" height="400%" width="100%">
-            <GenericTile 
-                id="_IDGenGenericTile"
-                frameType="Auto"
-                press=".onTilePress"
-                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
-                width="100%"
-                class="fullHeightTile"
-            />
-        </VBox>
-    </pages>
-</Carousel> -->
-<!-- 
-<Carousel
-    id="featuredMoviesCarousel"
-    pages="{MoviesJSONModel>/}"
-    loop="true"
-    height="400px"
-    class="sapUiSmallMarginTop fullWidthCarousel"
->
-    <pages>
-        <VBox id="_IDGenVBox7" height="100%" width="100%" alignItems="Stretch" justifyContent="Center">
-            <GenericTile id="_IDGenGenericTile" 
-                frameType="Auto"
-                press=".onTilePress"
-                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
-                class="fullSizeTile"
-            />
-        </VBox> 
-    </pages>
-</Carousel> -->
-<!-- <Carousel
-    id="featuredMoviesCarousel"
-    pages="{MoviesJSONModel>/}"
-    loop="true"
-    height="400px"
-    class="sapUiSmallMarginTop"
->
-    <pages>
-        <FlexBox id="_IDGenFlexBox4" 
-            height="100%" 
+<HBox id="section1" class="sapUiSmallMargin" justifyContent="SpaceBetween" alignItems="Stretch">
+    
+    <VBox id="_IDGenVBox7" width="33%" justifyContent="Center" class="sapUiSmallMarginEnd">
+        <Carousel id="_IDGenCarousel"
+            pages="{MoviesJSONModel>/}"
+            loop="true"
+            height="200px"
             width="100%"
-            alignItems="Stretch"
         >
-            <GenericTile id="_IDGenGenericTile" 
-                frameType="Auto"
-                press=".onTilePress"
-                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
-                width="100%"
-                class="fullSizeTile"
-            />
-        </FlexBox>
-    </pages>
-</Carousel> -->
-
-<Carousel
-    id="featuredMoviesCarousel"
-    pages="{MoviesJSONModel>/}"
-    loop="true"
-    height="400px"
-    class="sapUiSmallMarginTop featuredCarousel"
->
-    <pages>
-        <FlexBox id="_IDGenFlexBox4" 
-           alignItems="Stretch"
-          
-           
-           justifyContent="Center"
-           class="fullSizeTile"
-        >
-        <!-- <VBox id="_IDGdsajdisajox6" height="400%" width="100%"> -->
-            <GenericTile id="_IDGenGenericTile" 
-                frameType="OneByOne"
-                press=".onTilePress"
-                
-                backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
-                class="carouselPage"
-            />
-             <!-- </VBox>  -->
-        </FlexBox>
-    </pages>
-</Carousel>
-
-                <!-- <Carousel
-                    id="featuredMoviesCarousel"
-                    pages="{MoviesJSONModel>/}"
-                    loop="true"
-                    height="400px"
+            <pages>
+                <GenericTile id="_IDGenGenericTile"
+                    backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                    frameType="TwoByOne"
+                    press=".onTilePress"
+                    header="{MoviesJSONModel>Title}"
                     width="100%"
-                    class="sapUiSmallMarginTop"
-                >
-                    <pages>
-                        <GenericTile 
-                            id="_IDGenGenericTile"
-                            frameType="Auto"
-                            press=".onTilePress"
-                            backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
-                            header="" 
-                            subheader=""
-                            width="100%"
-                        />
-                    </pages>
-                </Carousel> -->
-            </VBox>
-        </VBox>
+                />
+            </pages>
+        </Carousel>
+    </VBox>
+
+    <VBox id="_IDGenVBox6"  justifyContent="Center" alignItems="Center" class="sapUiSmallMarginEnd">
+        <Image id="_IDGenImage2"
+            src="/img/lufthansa_cinema.png"
+            densityAware="false"
+            width="180px"
+            height="180px"
+            decorative="false"
+            alt="Company Logo"
+        />
+    </VBox>
+      
+    <VBox id="_IDGenVBox8"  width="33%" justifyContent="Center" class="sapUiSmallMarginEnd">
+        <Carousel id="_IDGenCarousel1"
+            pages="{MoviesJSONModel>/}"
+            loop="true"
+            height="200px"
+            width="100%"
+        >
+            <pages>
+                <GenericTile id="_IDGenGenericTile1" 
+                    backgroundImage="{path: 'MoviesJSONModel>MovieID', formatter: '.formatter.imageURL'}"
+                    frameType="TwoByOne"
+                    press=".onTilePress"
+                    header="{MoviesJSONModel>Title}"
+                    width="100%"
+                />
+            </pages>
+        </Carousel>
+    </VBox>
+
+</HBox>
+
+
 
         <!-- Section 2: Table with Search -->
         <VBox id="section2" class="sapUiMediumMargin">

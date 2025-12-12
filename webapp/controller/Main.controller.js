@@ -54,6 +54,7 @@ sap.ui.define([
 
         startAutoSlide: function () {
             var oCarousel = this.byId("_IDGenCarousel1");
+            var oCarousel2 = this.byId("_IDGenCarousel");
             if (!oCarousel) return;
 
             // Clear any existing interval first
@@ -62,7 +63,9 @@ sap.ui.define([
             // Set interval to slide every 3 seconds (3000ms)
             this._slideInterval = setInterval(function () {
                 oCarousel.next(); // Move to next slide
-            }, 3000);
+                oCarousel2.next(); // Move to next slide
+            }, 4000);
+
         },
 
         stopAutoSlide: function () {

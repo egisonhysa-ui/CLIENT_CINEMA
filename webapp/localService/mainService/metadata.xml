@@ -72,14 +72,14 @@
                 <Property Name="UserID" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:text="UserDescription" sap:label="User" sap:quickinfo="User Name in User Master Record"/>
                 <Property Name="UserDescription" Type="Edm.String" MaxLength="80" sap:label="Description" sap:quickinfo="User Description"/>
             </EntityType>
-            <EntityType Name="ZCDS_EH_MOVIESType" sap:semantics="aggregate" sap:label="CDS For Chart Of Movies" sap:content-version="1">
+            <EntityType Name="ZCDS_EH_MOVIESType" sap:semantics="aggregate" sap:label="Chart of Movies" sap:content-version="1">
                 <Key>
                     <PropertyRef Name="ID"/>
                 </Key>
                 <Property Name="ID" Type="Edm.String" Nullable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Movie_id" Type="Edm.Guid" sap:aggregation-role="dimension" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="Title" Type="Edm.String" MaxLength="30" sap:aggregation-role="dimension"/>
-                <Property Name="Sales_rate" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/>
+                <Property Name="TicketsSold" Type="Edm.Int32" sap:aggregation-role="measure" sap:filterable="false"/>
             </EntityType>
             <EntityType Name="VH_CATEGORIESType" sap:label="###GENERATED Core Data Service Entity" sap:content-version="1">
                 <Key>
@@ -162,6 +162,7 @@
                     <PropertyRef Name="MovieID"/>
                     <PropertyRef Name="IsActiveEntity"/>
                 </Key>
+                <Property Name="change_status_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Edit_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
@@ -176,6 +177,8 @@
                 <Property Name="StartDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="StartDate"/>
                 <Property Name="TrailerUrl" Type="Edm.String" MaxLength="255" sap:label="TrailerUrl"/>
                 <Property Name="Status" Type="Edm.Boolean" sap:label="Status" sap:quickinfo="Truth Value: True/False"/>
+                <Property Name="StatusCriticality" Type="Edm.Byte" sap:label="INT1" sap:quickinfo="1 Byte Unsigned Integer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SumOfTicket" Type="Edm.Byte" sap:label="INT1" sap:quickinfo="1 Byte Unsigned Integer" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="PosterFilename" Type="Edm.String" MaxLength="128" sap:label="PosterFilename"/>
                 <Property Name="PosterMimetype" Type="Edm.String" MaxLength="128" sap:label="PosterMimetype"/>
                 <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
@@ -236,6 +239,7 @@
                 <Property Name="Showtimeid" Type="Edm.Guid" Nullable="false" sap:label="Showtimeid" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
                 <Property Name="MovieId" Type="Edm.Guid" Nullable="false" sap:label="MovieID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:updatable="false"/>
                 <Property Name="HallId" Type="Edm.String" MaxLength="36" sap:label="HallId"/>
+                <Property Name="HelpHallId" Type="Edm.Guid" sap:label="HelpHallId" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)"/>
                 <Property Name="HallName" Type="Edm.String" MaxLength="30" sap:label="HallName" sap:value-list="standard"/>
                 <Property Name="ShowDate" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="ShowDate"/>
                 <Property Name="ShowTime" Type="Edm.Time" Precision="0" sap:label="ShowTime"/>
@@ -366,7 +370,7 @@
                 <Property Name="Delete_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="Update_mc" Type="Edm.Boolean" sap:label="Dyn. Method Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
                 <Property Name="CategoryID" Type="Edm.Guid" Nullable="false" sap:label="UUID" sap:quickinfo="16 Byte UUID in 16 Bytes (Raw Format)" sap:creatable="false" sap:updatable="false"/>
-                <Property Name="Name" Type="Edm.String" MaxLength="30" sap:value-list="standard"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="30"/>
                 <Property Name="LocalCreatedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Created By User" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LocalCreatedAt" Type="Edm.DateTimeOffset" Precision="7" sap:label="Created On" sap:quickinfo="Creation Date Time" sap:creatable="false" sap:updatable="false"/>
                 <Property Name="LocalLastChangedBy" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Changed By" sap:quickinfo="Local Instance Last Changed By User" sap:creatable="false" sap:updatable="false"/>
@@ -1057,6 +1061,10 @@
                     <Parameter Name="MovieID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
                 </FunctionImport>
+                <FunctionImport Name="change_status" ReturnType="cds_zui_eh_lhind_cinema.MOVIESType" EntitySet="MOVIES" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.MOVIESType" sap:applicable-path="change_status_ac">
+                    <Parameter Name="MovieID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
+                    <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
+                </FunctionImport>
                 <FunctionImport Name="MOVIESDiscard" ReturnType="cds_zui_eh_lhind_cinema.DummyFunctionImportResult" m:HttpMethod="POST" sap:action-for="cds_zui_eh_lhind_cinema.MOVIESType">
                     <Parameter Name="MovieID" Type="Edm.Guid" Mode="In" sap:label="UUID"/>
                     <Parameter Name="IsActiveEntity" Type="Edm.Boolean" Mode="In" sap:label="Is active"/>
@@ -1477,12 +1485,15 @@
                     <Record>
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
+                                <PropertyPath>change_status_ac</PropertyPath>
                                 <PropertyPath>Edit_ac</PropertyPath>
                                 <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_actors_oc</PropertyPath>
                                 <PropertyPath>to_category_oc</PropertyPath>
                                 <PropertyPath>to_directors_oc</PropertyPath>
+                                <PropertyPath>StatusCriticality</PropertyPath>
+                                <PropertyPath>SumOfTicket</PropertyPath>
                             </Collection>
                         </PropertyValue>
                         <PropertyValue Property="FilterExpressionRestrictions">
@@ -1561,12 +1572,15 @@
                     <Record>
                         <PropertyValue Property="NonSortableProperties">
                             <Collection>
+                                <PropertyPath>change_status_ac</PropertyPath>
                                 <PropertyPath>Edit_ac</PropertyPath>
                                 <PropertyPath>Delete_mc</PropertyPath>
                                 <PropertyPath>Update_mc</PropertyPath>
                                 <PropertyPath>to_actors_oc</PropertyPath>
                                 <PropertyPath>to_category_oc</PropertyPath>
                                 <PropertyPath>to_directors_oc</PropertyPath>
+                                <PropertyPath>StatusCriticality</PropertyPath>
+                                <PropertyPath>SumOfTicket</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -2435,43 +2449,6 @@
                 </Annotation>
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
-            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/Name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
-                <Annotation Term="Common.ValueListForValidation" String=""/>
-                <Annotation Term="Common.ValueList">
-                    <Record>
-                        <PropertyValue Property="Label" String=""/>
-                        <PropertyValue Property="CollectionPath" String="ZR_EHCATEGORIES"/>
-                        <PropertyValue Property="SearchSupported" Bool="false"/>
-                        <PropertyValue Property="Parameters">
-                            <Collection>
-                                <Record Type="Common.ValueListParameterInOut">
-                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Name"/>
-                                    <PropertyValue Property="ValueListProperty" String="Name"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="CategoryID"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedBy"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="LocalCreatedAt"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedBy"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="LocalLastChangedAt"/>
-                                </Record>
-                                <Record Type="Common.ValueListParameterDisplayOnly">
-                                    <PropertyValue Property="ValueListProperty" String="LastChangedAt"/>
-                                </Record>
-                            </Collection>
-                        </PropertyValue>
-                    </Record>
-                </Annotation>
-                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
-            </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.MOVIESType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.AcceptableMediaTypes">
                     <Collection>
@@ -2600,6 +2577,9 @@
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/HasDraftEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="SAP__core.ComputedDefaultValue"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/HelpHallId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="SAP__core.ComputedDefaultValue"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ALL_SHOWTIMESType/IsActiveEntity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
@@ -2888,7 +2868,7 @@
                         <PropertyValue Property="NonFilterableProperties">
                             <Collection>
                                 <PropertyPath>ID</PropertyPath>
-                                <PropertyPath>Sales_rate</PropertyPath>
+                                <PropertyPath>TicketsSold</PropertyPath>
                             </Collection>
                         </PropertyValue>
                     </Record>
@@ -2957,6 +2937,9 @@
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.VH_HALLSType/RowSeats" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
+            </Annotations>
+            <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHCATEGORIESType/Name" xmlns="http://docs.oasis-open.org/odata/ns/edm">
                 <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Optional"/>
             </Annotations>
             <Annotations Target="cds_zui_eh_lhind_cinema.ZR_EHHALLSType/Capacity" xmlns="http://docs.oasis-open.org/odata/ns/edm">
